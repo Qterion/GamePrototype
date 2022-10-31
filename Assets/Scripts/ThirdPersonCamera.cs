@@ -13,20 +13,37 @@ public class ThirdPersonCamera : MonoBehaviour
     public float rotationSpeed;
 
     public Transform combatLookAt;
-    public CameraStyle currentStyle;
-
-    public enum CameraStyle
+    public CameraView currentView;
+    public KeyCode CamSwitch = KeyCode.V;
+    public GameObject thirdPersonView;
+    public GameObject AimView;
+    private bool ViewSwitch = true;
+    public enum CameraView
     {
         Basic,
         Combat,
-        Topdown
     }
     private void Update()
     {
+        if (Input.GetKeyDown(CamSwitch)) ViewSwitch = !ViewSwitch; 
+        if (ViewSwitch)
+        {
+            AimView.SetActive(false);
+            thirdPersonView.SetActive(true);
+            currentView = CameraView.Basic;
+
+        }
+        if (!ViewSwitch)
+        {
+            AimView.SetActive(true);
+            thirdPersonView.SetActive(false);
+            currentView = CameraView.Combat;
+        }
+
         Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
         orientation.forward = viewDir.normalized;
 
-        if (currentStyle == CameraStyle.Basic)
+        if (currentView == CameraView.Basic)
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
@@ -37,7 +54,7 @@ public class ThirdPersonCamera : MonoBehaviour
             }
             
         }
-        else if (currentStyle == CameraStyle.Combat)
+        else if (currentView == CameraView.Combat)
         {
             Vector3 dirToCombat = combatLookAt.position - new Vector3(transform.position.x, combatLookAt.position.y, transform.position.z);
             orientation.forward = dirToCombat.normalized;
@@ -45,6 +62,8 @@ public class ThirdPersonCamera : MonoBehaviour
         }
 
     }
+  
+   
     // Start is called before the first frame update
     void Start()
     {
