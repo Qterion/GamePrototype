@@ -17,6 +17,8 @@ public class ThirdPersonCamera : MonoBehaviour
     public KeyCode CamSwitch = KeyCode.V;
     public GameObject thirdPersonView;
     public GameObject AimView;
+    public GameObject PlayerShoot;
+    public GameObject PlayerGun;
     private bool ViewSwitch = true;
     public enum CameraView
     {
@@ -30,6 +32,8 @@ public class ThirdPersonCamera : MonoBehaviour
         {
             AimView.SetActive(false);
             thirdPersonView.SetActive(true);
+            PlayerShoot.GetComponent<PlayerShooting>().enabled = false;
+            PlayerGun.SetActive(false);
             currentView = CameraView.Basic;
 
         }
@@ -37,6 +41,8 @@ public class ThirdPersonCamera : MonoBehaviour
         {
             AimView.SetActive(true);
             thirdPersonView.SetActive(false);
+            PlayerShoot.GetComponent<PlayerShooting>().enabled = true;
+            PlayerGun.SetActive(true);
             currentView = CameraView.Combat;
         }
 
