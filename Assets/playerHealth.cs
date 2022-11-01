@@ -6,22 +6,28 @@ using UnityEngine;
 public class playerHealth : MonoBehaviour
 {
     // Start is called before the first frame update
-    public static int PlayerHP = 100;
+    public static float PlayerMaxHP = 100f;
+    public static float PlayerHP = 100f;
     public TextMeshProUGUI PlayerHPText;
     public static bool GameOver;
     void Start()
     {
         GameOver = false;
+        PlayerHP = PlayerMaxHP;
     }
-
     // Update is called once per frame
     void Update()
     {
-        PlayerHPText.text = "<3" + PlayerHP;
+        //Changes player health bar value on ui
+        PlayerHPText.text = "+" + PlayerHP;
         if (GameOver)
         {
 
         }
+    }
+    public void TakeFallDamage()
+    {
+        PlayerHP = PlayerHP - 10;
     }
     public void TakeDamage(int damageAmount)
     {

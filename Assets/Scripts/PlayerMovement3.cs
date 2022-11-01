@@ -9,12 +9,18 @@ public class PlayerMovement3 : MonoBehaviour
     public float walkSpeed;
     public float sprintSpeed;
 
+    [Header("Damage")]
+    public playerHealth playerHealthScript;
+
     public float groundDrag;
     [Header("Jumping")]
     public float jumpForce;
     public float jumpCooldown;
     public float airMult;
     bool readyToJump;
+    float fallTime = 0;
+    bool PFallen = false;
+
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -69,7 +75,26 @@ public class PlayerMovement3 : MonoBehaviour
         StateHandler();
         //handle drag
         if (grounded)
+        {
             rb.drag = groundDrag;
+            if (PFallen)
+            {
+                if (fallTime > 1)
+                {
+                    playerHealthScript.TakeFallDamage();
+                }
+                PFallen = false;
+                fallTime = 0;
+            }
+
+        }
+        if (this.transform.position.y >= 7)
+        {
+            fallTime += Time.deltaTime;
+            PFallen = true;
+        }
+
+
         else
             rb.drag = 0;
     }
