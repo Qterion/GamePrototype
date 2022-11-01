@@ -18,7 +18,6 @@ public class PlayerMovement3 : MonoBehaviour
     public float jumpCooldown;
     public float airMult;
     bool readyToJump;
-    float fallTime = 0;
     bool PFallen = false;
 
 
@@ -41,7 +40,7 @@ public class PlayerMovement3 : MonoBehaviour
     public float maxSlopeAngle;
     private RaycastHit slopeHit;
     private bool exitingSlope;
-
+    private float FallHeight;
     public Transform orientation;
     float horizontalInput;
     float verticalInput;
@@ -79,24 +78,27 @@ public class PlayerMovement3 : MonoBehaviour
             rb.drag = groundDrag;
             if (PFallen)
             {
-                if (fallTime > 1)
+                if (FallHeight- this.transform.position.y > 3)
                 {
-                    playerHealthScript.TakeFallDamage();
+                    playerHealthScript.TakeFallDamage(Mathf.Round((FallHeight - this.transform.position.y) * 1) / 1 * 5);
                 }
                 PFallen = false;
-                fallTime = 0;
             }
 
         }
-        if (this.transform.position.y >= 7)
-        {
-            fallTime += Time.deltaTime;
-            PFallen = true;
-        }
-
 
         else
+        {
             rb.drag = 0;
+
+            if (!PFallen)
+            {
+                FallHeight = this.transform.position.y;
+                PFallen = true;
+            }
+        }
+            
+
     }
     private void FixedUpdate()
     {

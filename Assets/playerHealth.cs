@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine;
 
@@ -22,12 +23,21 @@ public class playerHealth : MonoBehaviour
         PlayerHPText.text = "+" + PlayerHP;
         if (GameOver)
         {
-
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
-    public void TakeFallDamage()
+    public void TakeFallDamage(float damage)
     {
-        PlayerHP = PlayerHP - 10;
+        PlayerHP = PlayerHP - damage;
+        CheckHealth();
+    }
+    private void CheckHealth()
+    {
+        if (PlayerHP <= 0)
+        {
+            PlayerHP = 0;
+            GameOver = true;
+        }
     }
     public void TakeDamage(int damageAmount)
     {
