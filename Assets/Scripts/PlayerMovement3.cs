@@ -18,8 +18,7 @@ public class PlayerMovement3 : MonoBehaviour
     public float jumpCooldown;
     public float airMult;
     bool readyToJump;
-    bool PFallen = false;
-
+    public float HighestPBeforeDamage = 5;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -35,6 +34,7 @@ public class PlayerMovement3 : MonoBehaviour
     public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;
+    
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
@@ -76,13 +76,10 @@ public class PlayerMovement3 : MonoBehaviour
         if (grounded)
         {
             rb.drag = groundDrag;
-            if (PFallen)
+            if (FallHeight- this.transform.position.y > HighestPBeforeDamage)
             {
-                if (FallHeight- this.transform.position.y > 3)
-                {
-                    playerHealthScript.TakeFallDamage(Mathf.Round((FallHeight - this.transform.position.y) * 1) / 1 * 5);
-                }
-                PFallen = false;
+                playerHealthScript.TakeFallDamage(Mathf.Round((FallHeight - this.transform.position.y) * 1) / 1 * 2);
+                FallHeight = this.transform.position.y;
             }
 
         }
@@ -90,11 +87,10 @@ public class PlayerMovement3 : MonoBehaviour
         else
         {
             rb.drag = 0;
-
-            if (!PFallen)
+            // checks the highest point of the player off the ground
+            if (this.transform.position.y>FallHeight)
             {
                 FallHeight = this.transform.position.y;
-                PFallen = true;
             }
         }
             

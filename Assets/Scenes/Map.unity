@@ -17601,6 +17601,7 @@ MonoBehaviour:
   jumpForce: 5
   jumpCooldown: 1
   airMult: 0.4
+  HighestPBeforeDamage: 8
   crouchSpeed: 3.5
   crouchYScale: 0.5
   jumpKey: 32
