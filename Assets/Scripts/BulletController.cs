@@ -21,7 +21,10 @@ public class BulletController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other) {
+    private void OnCollisionEnter(Collision collidedObject) {
+        if (collidedObject.gameObject.tag == "Enemy") {
+            collidedObject.gameObject.GetComponent<EnemyHealth>().takenHealthDamage(10);
+        }
         Destroy(gameObject);
     }
 
