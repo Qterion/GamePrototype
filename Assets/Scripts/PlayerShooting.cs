@@ -35,18 +35,23 @@ public class PlayerShooting : MonoBehaviour {
     }
 
     private void ShootGun() {
-        RaycastHit bulletHit;
-        GameObject bullet = GameObject.Instantiate(bullets, SightTransform.position, Quaternion.identity, allBullets);
-        BulletController bulletController = bullet.GetComponent<BulletController>();
-        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out bulletHit, Mathf.Infinity)) {
-            bulletController.target = bulletHit.point;
-            bulletController.bulletHit = true;
+        if (this.enabled == true){
+            RaycastHit bulletHit;
+            GameObject bullet = GameObject.Instantiate(bullets, SightTransform.position, Quaternion.identity, allBullets);
+            BulletController bulletController = bullet.GetComponent<BulletController>();
+            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out bulletHit, Mathf.Infinity))
+            {
+                bulletController.target = bulletHit.point;
+                bulletController.bulletHit = true;
+            }
+            else
+            {
+                bulletController.target = cameraTransform.position + cameraTransform.forward * bulletDistance;
+                bulletController.bulletHit = true;
+            }
+            shootAction.performed -= _ => ShootGun();
         }
-        else {
-            bulletController.target = cameraTransform.position + cameraTransform.forward * bulletDistance;
-            bulletController.bulletHit = true;
-        }
-        shootAction.performed -= _ => ShootGun();
+        
     }
 
     // Start is called before the first frame update
@@ -57,6 +62,6 @@ public class PlayerShooting : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
+ 
     }
 }
