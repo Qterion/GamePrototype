@@ -22,10 +22,12 @@ public class EnemySpawner : MonoBehaviour
         GameObject[] enemyCount = GameObject.FindGameObjectsWithTag("Enemy");
 
         int thingyCount = enemyCount.Length;
+        Debug.Log(thingyCount);
+        
 
 
 
-        if (thingyCount <= maxEnemy){
+        if (thingyCount < maxEnemy){
             if (Time.time >= nextSpawnTime)
             {
                 nextSpawnTime = Time.time + respawnTime;
