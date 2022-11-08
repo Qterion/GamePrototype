@@ -11,10 +11,15 @@ public class EnemySpawner : MonoBehaviour
     private float respawnTime = 5f;
     private float nextSpawnTime;
     [SerializeField]
-    private int maxEnemy;
+    private int maxEnemyInScene;
+    [SerializeField]
+    private int enemiesToSpawn;
+    private int enemiesSpawned = 0;
 
 
-  
+
+
+
 
     // Update is called once per frame
     private void Update()
@@ -23,16 +28,21 @@ public class EnemySpawner : MonoBehaviour
 
         int thingyCount = enemyCount.Length;
         Debug.Log(thingyCount);
-        
 
 
-
-        if (thingyCount < maxEnemy){
-            if (Time.time >= nextSpawnTime)
+        if (enemiesSpawned < enemiesToSpawn)
+        {
+            if (thingyCount < maxEnemyInScene)
             {
-                nextSpawnTime = Time.time + respawnTime;
+                if (Time.time >= nextSpawnTime)
+                {
+                    nextSpawnTime = Time.time + respawnTime;
 
-                GameObject.Instantiate(enemyPrefab, transform.position, transform.rotation);
+                    GameObject.Instantiate(enemyPrefab, transform.position, transform.rotation);
+                    enemiesSpawned = +1;
+                }
+
+                
             }
         }
 
