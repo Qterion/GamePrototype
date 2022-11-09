@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 8955237582397425978}
   - component: {fileID: 8955237582397425977}
   - component: {fileID: 4715008037705741119}
+  - component: {fileID: 4373379906326557899}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -302,7 +303,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8955237582397425922}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cec028b413ff0bc4cb5c3a3e46a3d069, type: 3}
   m_Name: 
@@ -375,5 +376,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8955237582397425922}
   respawnTime: 10
-  maxEnemyInScene: 2
-  enemiesToSpawn: 4
+  maxEnemyInScene: 20
+  enemiesToSpawn: 100
+--- !u!114 &4373379906326557899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8955237582397425922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f12de2e90f87942ada7a665ec7ca2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stoppingDistance: 2
+  damage: 10
