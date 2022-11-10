@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerShooting : MonoBehaviour {
 
     [SerializeField]
-    private GameObject bullets;
+    public GameObject bullets;
     [SerializeField]
     private Transform SightTransform;
     [SerializeField]
