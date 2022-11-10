@@ -29766,8 +29766,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawners: []
   enemy: {fileID: 8955237582397425922, guid: 26dbdee5f0c7d734ea9f181069496ea9, type: 3}
-  respawnTime: 1
-  maxEnemyInScene: 30
+  respawnTime: 10
+  maxEnemyInScene: 10
   enemiesToSpawn: 50
 --- !u!4 &2099030898
 Transform:
@@ -30307,11 +30307,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4146001803800715573, guid: d59096dcdddce4f488ee713c3459fab4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000004690473
+      value: 0.000000012639578
       objectReference: {fileID: 0}
     - target: {fileID: 4146001803800715573, guid: d59096dcdddce4f488ee713c3459fab4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000029327092
+      value: 2.511945e-10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
