@@ -12145,7 +12145,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh44544
+  m_Name: pb_Mesh96626
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -29758,8 +29758,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawners: []
   enemy: {fileID: 8955237582397425922, guid: 26dbdee5f0c7d734ea9f181069496ea9, type: 3}
-  maxEnemyInScene: 200
-  enemiesToSpawn: 100
+  respawnTime: 1
+  maxEnemyInScene: 30
+  enemiesToSpawn: 50
 --- !u!4 &2099030898
 Transform:
   m_ObjectHideFlags: 0

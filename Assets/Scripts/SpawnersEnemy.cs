@@ -12,9 +12,9 @@ public class SpawnersEnemy : MonoBehaviour
     [SerializeField]
     private GameObject enemy;
 
-    
 
-    private float respawnTime = 5f;
+    [SerializeField]
+    private float respawnTime;  // = 5f
     private float nextSpawnTime;
     [SerializeField]
     private int maxEnemyInScene;
@@ -34,9 +34,19 @@ public class SpawnersEnemy : MonoBehaviour
     }
 
     private void spawnEnemy()
+
     {
-        int spawnerID = Random.Range(0, spawners.Length) ;
-        GameObject.Instantiate(enemy, spawners[spawnerID].transform.position, spawners[spawnerID].transform.rotation);
+
+        if (enemiesSpawned <= enemiesToSpawn)
+        {
+            int spawnerID = Random.Range(0, spawners.Length);
+            GameObject.Instantiate(enemy, spawners[spawnerID].transform.position, spawners[spawnerID].transform.rotation);
+            enemiesSpawned++;
+            Debug.Log(enemiesSpawned);
+
+
+
+        }
     }
 
     // Update is called once per frame
@@ -55,25 +65,24 @@ public class SpawnersEnemy : MonoBehaviour
         GameObject[] enemyCount = GameObject.FindGameObjectsWithTag("Enemy");
 
         int thingyCount = enemyCount.Length;
-        Debug.Log(thingyCount);
+        //Debug.Log(thingyCount);
 
 
-        if (enemiesSpawned < enemiesToSpawn)
+      
+        if (thingyCount < maxEnemyInScene)
         {
-            if (thingyCount < maxEnemyInScene)
+            if (Time.time >= nextSpawnTime)
             {
-                if (Time.time >= nextSpawnTime)
-                {
-                    nextSpawnTime = Time.time + respawnTime;
+                nextSpawnTime = Time.time + respawnTime;
 
-                    spawnEnemy();
+                spawnEnemy();
 
-                    enemiesSpawned = +1;
-                }
-
-
+                    
             }
+
+
         }
+       
     }
 
 

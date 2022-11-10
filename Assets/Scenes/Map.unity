@@ -21247,8 +21247,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawners: []
   enemy: {fileID: 8955237582397425922, guid: 26dbdee5f0c7d734ea9f181069496ea9, type: 3}
-  maxEnemyInScene: 10
-  enemiesToSpawn: 20
+  maxEnemyInScene: 5
+  enemiesToSpawn: 10
 --- !u!4 &1545770123
 Transform:
   m_ObjectHideFlags: 0
