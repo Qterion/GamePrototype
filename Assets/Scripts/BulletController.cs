@@ -6,6 +6,7 @@ public class BulletController : MonoBehaviour
 {
     private float bulletSpeed = 30f;
     private float bulletTimeout = 2f;
+    public int bulletDamage = 10;
 
     public Vector3 target { get; set; }
     public bool bulletHit { get; set; }
@@ -23,7 +24,7 @@ public class BulletController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collidedObject) {
         if (collidedObject.gameObject.tag == "Enemy") {
-            collidedObject.gameObject.GetComponent<EnemyHealth>().takenHealthDamage(10);
+            collidedObject.gameObject.GetComponent<EnemyHealth>().takenHealthDamage(bulletDamage);
         }
         Destroy(gameObject);
     }

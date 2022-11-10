@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerShooting : MonoBehaviour {
 
     [SerializeField]
-    private GameObject bullets;
+    public GameObject bullets;
     [SerializeField]
     private Transform SightTransform;
     [SerializeField]
@@ -19,7 +19,6 @@ public class PlayerShooting : MonoBehaviour {
     private Transform cameraTransform;
     private InputAction shootAction;
 
-    // Start is called before the first frame update
     void Awake() {
         playerInput = GetComponent<PlayerInput>();
         cameraTransform = Camera.main.transform;
@@ -51,17 +50,5 @@ public class PlayerShooting : MonoBehaviour {
             }
             shootAction.performed -= _ => ShootGun();
         }
-        
-    }
-
-    // Start is called before the first frame update
-    //private void Start() { 
-    
-    //}
-
-    // Update is called once per frame
-    void Update()
-    {
- 
     }
 }

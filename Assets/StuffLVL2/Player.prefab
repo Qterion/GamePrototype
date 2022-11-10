@@ -27,8 +27,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55524371977604537}
-  m_LocalRotation: {x: 0.03748445, y: -0.6163041, z: 0.029389143, w: 0.7860665}
-  m_LocalPosition: {x: 6.797807, y: 2, z: -1.6702766}
+  m_LocalRotation: {x: 0.04763198, y: -0, z: -0, w: 0.99886495}
+  m_LocalPosition: {x: 0, y: 2, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -298,7 +298,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819579816914576611}
   m_LocalRotation: {x: 0.04763198, y: 0.000000029802322, z: 1.110223e-16, w: 0.998865}
-  m_LocalPosition: {x: 0.0000009181782, y: 2.842171e-14, z: -0.0000017384767}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 3525297074236876090}
   - component: {fileID: 7976143545790949250}
   m_Layer: 0
-  m_Name: Player  (1)
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -498,7 +498,7 @@ Transform:
   - {fileID: 3365087191493260163}
   - {fileID: 1958675745665570692}
   m_Father: {fileID: 0}
-  m_RootOrder: 64
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 76.195, z: 0}
 --- !u!54 &8088864993914305100
 Rigidbody:
@@ -1090,8 +1090,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3158385614230041115}
-  m_LocalRotation: {x: 0.09252103, y: 0.00000002977215, z: -0.0000000013407566, w: 0.9957108}
-  m_LocalPosition: {x: 0.0000009181782, y: 2.842171e-14, z: -0.0000017384767}
+  m_LocalRotation: {x: 0.092521034, y: 0.000000012639056, z: 2.512433e-10, w: 0.9957108}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1895,8 +1895,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6605285689495446942}
-  m_LocalRotation: {x: 0.13870122, y: -5.344489e-10, z: 0.0000000051600075, w: 0.9903343}
-  m_LocalPosition: {x: 0.0000012595139, y: 5.684342e-14, z: -0.0000031276684}
+  m_LocalRotation: {x: 0.1387012, y: 0.00000002967765, z: -0.0000000027231033, w: 0.9903343}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2158,7 +2158,7 @@ GameObject:
   - component: {fileID: 911401000054116980}
   m_Layer: 0
   m_Name: Player obj
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
