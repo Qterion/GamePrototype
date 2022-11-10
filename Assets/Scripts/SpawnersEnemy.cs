@@ -7,7 +7,12 @@ public class SpawnersEnemy : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject[] spawners;
-    public GameObject enemy;
+
+
+    [SerializeField]
+    private GameObject enemy;
+
+    
 
     private float respawnTime = 5f;
     private float nextSpawnTime;
@@ -31,7 +36,7 @@ public class SpawnersEnemy : MonoBehaviour
     private void spawnEnemy()
     {
         int spawnerID = Random.Range(0, spawners.Length) ;
-        Instantiate(enemy, spawners[spawnerID].transform.position, spawners[spawnerID].transform.rotation);
+        GameObject.Instantiate(enemy, spawners[spawnerID].transform.position, spawners[spawnerID].transform.rotation);
     }
 
     // Update is called once per frame
