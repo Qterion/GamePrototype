@@ -2906,11 +2906,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &155064992 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8955237582397425922, guid: 26dbdee5f0c7d734ea9f181069496ea9, type: 3}
-  m_PrefabInstance: {fileID: 1201739492}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &159819635
 Mesh:
   m_ObjectHideFlags: 0
@@ -29762,7 +29757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawners: []
-  enemy: {fileID: 155064992}
+  enemy: {fileID: 8955237582397425922, guid: 26dbdee5f0c7d734ea9f181069496ea9, type: 3}
   maxEnemyInScene: 200
   enemiesToSpawn: 100
 --- !u!4 &2099030898
