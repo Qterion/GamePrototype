@@ -83,6 +83,9 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        AimView.SetActive(false);
+        thirdPersonView.SetActive(true);
+        PlayerGun.SetActive(false);
         playerInput = GetComponent<PlayerInput>();
         // importing the viewchange to be able to switch view
         swithView = playerInput.actions["ViewChange"];
