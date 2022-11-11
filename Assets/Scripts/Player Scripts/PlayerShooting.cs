@@ -19,12 +19,11 @@ public class PlayerShooting : MonoBehaviour {
     private PlayerInput playerInput;
     private Transform cameraTransform;
     private InputAction shootAction;
-    public bool CanShoot=false;
+
     void Awake() {
         playerInput = GetComponent<PlayerInput>();
         cameraTransform = Camera.main.transform;
         shootAction = playerInput.actions["Shoot"];
-        CanShoot = false;
     }
 
     private void OnEnable() {
@@ -37,7 +36,7 @@ public class PlayerShooting : MonoBehaviour {
 
     private void ShootGun() {
         //checks if the script is enabled if yes, allows player to shoot
-        if (CanShoot){
+        if (!PlayerCamera.ViewSwitch){
             RaycastHit bulletHit;
             GameObject bullet = GameObject.Instantiate(bullets, SightTransform.position, Quaternion.identity, allBullets);
             BulletController bulletController = bullet.GetComponent<BulletController>();

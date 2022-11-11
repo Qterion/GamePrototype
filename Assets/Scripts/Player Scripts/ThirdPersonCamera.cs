@@ -20,7 +20,6 @@ public class ThirdPersonCamera : MonoBehaviour
     public GameObject thirdPersonView;
     public GameObject AimView;
     public GameObject PlayerGun;
-    public PlayerShooting Shooting;
     private PlayerInput playerInput;
     private InputAction swithView;
     private InputAction Mousex;
@@ -40,7 +39,6 @@ public class ThirdPersonCamera : MonoBehaviour
             AimView.SetActive(false);
             thirdPersonView.SetActive(true);
             PlayerGun.SetActive(false);
-            Shooting.CanShoot = false;
             currentView = CameraView.Basic;
 
         }
@@ -49,7 +47,6 @@ public class ThirdPersonCamera : MonoBehaviour
         {
             AimView.SetActive(true);
             thirdPersonView.SetActive(false);
-            Shooting.CanShoot = true;
             //enables the player gun model in player obj
             PlayerGun.SetActive(true);
             currentView = CameraView.Combat;
@@ -86,6 +83,9 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        AimView.SetActive(false);
+        thirdPersonView.SetActive(true);
+        PlayerGun.SetActive(false);
         playerInput = GetComponent<PlayerInput>();
         // importing the viewchange to be able to switch view
         swithView = playerInput.actions["ViewChange"];
