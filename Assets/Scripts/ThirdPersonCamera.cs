@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
+[RequireComponent( typeof(PlayerInput))]
 public class ThirdPersonCamera : MonoBehaviour
 {
     [Header("References")]
@@ -14,12 +17,13 @@ public class ThirdPersonCamera : MonoBehaviour
 
     public Transform combatLookAt;
     public CameraView currentView;
-    public KeyCode CamSwitch = KeyCode.V;
     public GameObject thirdPersonView;
     public GameObject AimView;
     public GameObject PlayerShoot;
     public GameObject PlayerGun;
+    private PlayerInput playerInput;
     private bool ViewSwitch = true;
+    float mouseInputx, mouseInputy;
     public enum CameraView
     {
         Basic,
@@ -27,7 +31,7 @@ public class ThirdPersonCamera : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(CamSwitch)) ViewSwitch = !ViewSwitch; 
+        // on true swithces to  basic view
         if (ViewSwitch)
         {
             AimView.SetActive(false);
@@ -37,11 +41,14 @@ public class ThirdPersonCamera : MonoBehaviour
             currentView = CameraView.Basic;
 
         }
+        //on viewswitch false switches on combat view
         if (!ViewSwitch)
         {
             AimView.SetActive(true);
             thirdPersonView.SetActive(false);
+            //enables the player shoot script
             PlayerShoot.GetComponent<PlayerShooting>().enabled = true;
+            //enables the player gun model in player obj
             PlayerGun.SetActive(true);
             currentView = CameraView.Combat;
         }
@@ -49,10 +56,11 @@ public class ThirdPersonCamera : MonoBehaviour
         Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
         orientation.forward = viewDir.normalized;
 
+        // settings for the basic view
         if (currentView == CameraView.Basic)
         {
-            float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
+            float horizontalInput = mouseInputx;
+            float verticalInput = mouseInputy;
             Vector3 InputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
             if (InputDir != Vector3.zero)
             {
@@ -60,6 +68,7 @@ public class ThirdPersonCamera : MonoBehaviour
             }
             
         }
+        // settings for the combat view
         else if (currentView == CameraView.Combat)
         {
             Vector3 dirToCombat = combatLookAt.position - new Vector3(transform.position.x, combatLookAt.position.y, transform.position.z);
@@ -75,6 +84,18 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        playerInput = GetComponent<PlayerInput>();
+        // importing the viewchange to be able to switch view
+        playerInput.actions["ViewChange"].performed += X => SwitchView();
+
+        // importing the mouse input from new input system
+        playerInput.actions["MouseX"].performed += ctx => mouseInputx= ctx.ReadValue<float>();
+        playerInput.actions["MouseY"].performed += ctx => mouseInputy= ctx.ReadValue<float>();
+    }
+
+    private void SwitchView()
+    {
+        ViewSwitch = !ViewSwitch;
     }
 
     // Update is called once per frame

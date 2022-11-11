@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//Automatically implements the charactercomponent and playerInput if it doesnt exist in player component
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerMovement3 : MonoBehaviour
 {
+    
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed;
@@ -31,6 +33,8 @@ public class PlayerMovement3 : MonoBehaviour
     public LayerMask whatIsGround;
     bool grounded;
     
+    [Header("PlayerCam")]
+    public ThirdPersonCamera PlayerCamera;
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
@@ -48,9 +52,9 @@ public class PlayerMovement3 : MonoBehaviour
     private InputAction jumpAction;
     private InputAction sprintAction;
     private InputAction crouchAction;
-    private bool isSprinting;
-    private bool isCrouching;
-
+    private bool isSprinting = false;
+    private bool isCrouching = false;
+    
     // Start is called before the first frame update
 
 
@@ -65,15 +69,17 @@ public class PlayerMovement3 : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        // disabling controller collider since it collides with player object
         controller.detectCollisions = false;
         playerInput = GetComponent<PlayerInput>();
+
+        // Unity New Input System
         moveAction=playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
-        
         playerInput.actions["SprintStart"].performed += X => SprintPressed();
-        playerInput.actions["SprintFinish"].performed += X => SprintReleased();
+        playerInput.actions["SprintFinish"].performed += X => SprintPressed();
         playerInput.actions["CrouchStart"].performed += X => CrouchPressed();
-        playerInput.actions["CrouchFinish"].performed += X => CrouchReleased();
+        playerInput.actions["CrouchFinish"].performed += X => CrouchPressed();
         
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -92,9 +98,12 @@ public class PlayerMovement3 : MonoBehaviour
         if (grounded)
         {
             rb.drag = groundDrag;
+            // calculates if the fall height - the ground position is higher than the highest allowed height before damage
             if (FallHeight- this.transform.position.y > HighestPBeforeDamage)
             {
+                //passes the calculated damage value to the player health script
                 playerHealthScript.TakeFallDamage(Mathf.Round((FallHeight - this.transform.position.y) * 1) / 1 * 2);
+                //resets the fall height
                 FallHeight = this.transform.position.y;
             }
 
@@ -118,11 +127,12 @@ public class PlayerMovement3 : MonoBehaviour
     }
     private void MyInput()
     {
+        // getting values from WASD Input from Unity new Input system
         Vector2 input = moveAction.ReadValue<Vector2>();
         horizontalInput = input.x;
         verticalInput = input.y;
         
-
+        // only jumps when space bar is pressed, is ready to jump and player on the ground
         if (jumpAction.triggered && readyToJump && grounded)
         {
             readyToJump = false;
@@ -134,7 +144,7 @@ public class PlayerMovement3 : MonoBehaviour
         if (isCrouching)
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-            rb.AddForce(Vector3.down *5f, ForceMode.Impulse);
+            
         }
 
         //stop crouch
@@ -157,7 +167,8 @@ public class PlayerMovement3 : MonoBehaviour
             moveSpeed = crouchSpeed;
         }
 
-        if (grounded && isSprinting)
+        // Sprints only in Basic mode
+        if (grounded && isSprinting && PlayerCamera.currentView.Equals(ThirdPersonCamera.CameraView.Basic))
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
@@ -187,13 +198,13 @@ public class PlayerMovement3 : MonoBehaviour
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
             }
         }
-
+        // player movement on ground
         if (grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         }
             
-
+        // player movement in air
         else if(!grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMult, ForceMode.Force);
@@ -216,6 +227,7 @@ public class PlayerMovement3 : MonoBehaviour
         }
         else
         {
+            // limits the maximym player movement speed to the setted value
             Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             if (flatVel.magnitude > moveSpeed)
             {
@@ -226,17 +238,21 @@ public class PlayerMovement3 : MonoBehaviour
         }
         
     }
+    //basic Jump function
     private void Jump()
     {
         exitingSlope = true;
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
+
     private void ResetJump()
     {
         readyToJump = true;
         exitingSlope = false;
     }
+
+    //on slope movement method
     private bool OnSlope()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.15f + 0.3f))
@@ -247,25 +263,21 @@ public class PlayerMovement3 : MonoBehaviour
         }
         return false;
     }
+
     private Vector3 GetSlopeMoveDirection()
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
     }
 
+    // basic switch method for sprint and crouch
     private void SprintPressed()
     {
-        isSprinting = true;
+        isSprinting = !isSprinting;
     }
-    private void SprintReleased()
-    {
-        isSprinting = false;
-    }
+    
     private void CrouchPressed()
     {
-        isCrouching = true;
+        isCrouching = !isCrouching;
     }
-    private void CrouchReleased()
-    {
-        isCrouching = false;
-    }
+   
 }

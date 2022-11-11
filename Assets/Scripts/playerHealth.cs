@@ -21,16 +21,21 @@ public class playerHealth : MonoBehaviour
     {
         //Changes player health bar value on ui
         PlayerHPText.text = "+" + PlayerHP;
+
+        // if gameover is true it restarts the current scene
         if (GameOver)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
+    // basic method that takes as a paraeter a float value and substracts it from current health
     public void TakeFallDamage(float damage)
     {
         PlayerHP = PlayerHP - damage;
         CheckHealth();
     }
+
+    //if the player health is 0 sets gameover to true
     private void CheckHealth()
     {
         if (PlayerHP <= 0)
@@ -39,6 +44,7 @@ public class playerHealth : MonoBehaviour
             GameOver = true;
         }
     }
+
     public void TakeDamage(int damageAmount)
     {
         if (PlayerHP - damageAmount <= 0)

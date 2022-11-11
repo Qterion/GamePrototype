@@ -34,6 +34,7 @@ public class PlayerShooting : MonoBehaviour {
     }
 
     private void ShootGun() {
+        //checks if the script is enabled if yes, allows player to shoot
         if (this.enabled == true){
             RaycastHit bulletHit;
             GameObject bullet = GameObject.Instantiate(bullets, SightTransform.position, Quaternion.identity, allBullets);
