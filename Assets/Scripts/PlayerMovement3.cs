@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerMovement3 : MonoBehaviour
 {
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed;
     public float sprintSpeed;
-
     [Header("Damage")]
     public playerHealth playerHealthScript;
 
@@ -46,8 +47,18 @@ public class PlayerMovement3 : MonoBehaviour
     float verticalInput;
     Vector3 moveDirection;
     Rigidbody rb;
+    private CharacterController controller;
+    private PlayerInput playerInput;
+    private InputAction moveAction;
+    private InputAction jumpAction;
+    private InputAction sprintAction;
+    private InputAction crouchAction;
+    private bool isSprinting;
+    private bool isCrouching;
 
     // Start is called before the first frame update
+
+
     public MovementState state;
     public enum MovementState
     {
@@ -58,7 +69,16 @@ public class PlayerMovement3 : MonoBehaviour
     }
     private void Start()
     {
-    
+        controller = GetComponent<CharacterController>();
+        playerInput = GetComponent<PlayerInput>();
+        moveAction=playerInput.actions["Move"];
+        jumpAction = playerInput.actions["Jump"];
+        
+        playerInput.actions["SprintStart"].performed += X => SprintPressed();
+        playerInput.actions["SprintFinish"].performed += X => SprintReleased();
+        playerInput.actions["CrouchStart"].performed += X => CrouchPressed();
+        playerInput.actions["CrouchFinish"].performed += X => CrouchReleased();
+        
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         ResetJump();
@@ -102,10 +122,12 @@ public class PlayerMovement3 : MonoBehaviour
     }
     private void MyInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        Vector2 input = moveAction.ReadValue<Vector2>();
+        horizontalInput = input.x;
+        verticalInput = input.y;
+        
 
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        if (jumpAction.triggered && readyToJump && grounded)
         {
             readyToJump = false;
             Jump();
@@ -113,14 +135,14 @@ public class PlayerMovement3 : MonoBehaviour
         }
 
         //crouch
-        if (Input.GetKeyDown(crouchKey))
+        if (isCrouching)
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
             rb.AddForce(Vector3.down *5f, ForceMode.Impulse);
         }
 
         //stop crouch
-        if (Input.GetKeyUp(crouchKey))
+        if (!isCrouching)
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
@@ -133,13 +155,13 @@ public class PlayerMovement3 : MonoBehaviour
         
     {
         //mode crouching
-        if (Input.GetKey(crouchKey))
+        if (isCrouching)
         {
             state = MovementState.crouching;
             moveSpeed = crouchSpeed;
         }
 
-        if (grounded && Input.GetKey(sprintKey))
+        if (grounded && isSprinting)
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
@@ -232,5 +254,22 @@ public class PlayerMovement3 : MonoBehaviour
     private Vector3 GetSlopeMoveDirection()
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    }
+
+    private void SprintPressed()
+    {
+        isSprinting = true;
+    }
+    private void SprintReleased()
+    {
+        isSprinting = false;
+    }
+    private void CrouchPressed()
+    {
+        isCrouching = true;
+    }
+    private void CrouchReleased()
+    {
+        isCrouching = false;
     }
 }
