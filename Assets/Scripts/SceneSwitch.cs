@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
 {
+
     void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(1);
+        GameObject[] enemyCount = GameObject.FindGameObjectsWithTag("Enemy");
+        int enemyLeft = enemyCount.Length;
+        if (enemyLeft == 0) {
+            SceneManager.LoadScene(1);
+        }
     }
 }
