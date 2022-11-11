@@ -22,7 +22,10 @@ public class ThirdPersonCamera : MonoBehaviour
     public GameObject PlayerShoot;
     public GameObject PlayerGun;
     private PlayerInput playerInput;
-    private bool ViewSwitch = true;
+    private InputAction swithView;
+    private InputAction Mousex;
+    private InputAction Mousey;
+    public bool ViewSwitch = true;
     float mouseInputx, mouseInputy;
     public enum CameraView
     {
@@ -86,11 +89,14 @@ public class ThirdPersonCamera : MonoBehaviour
         Cursor.visible = false;
         playerInput = GetComponent<PlayerInput>();
         // importing the viewchange to be able to switch view
-        playerInput.actions["ViewChange"].performed += X => SwitchView();
+        swithView = playerInput.actions["ViewChange"];
+        swithView.performed += X => SwitchView();
 
         // importing the mouse input from new input system
-        playerInput.actions["MouseX"].performed += ctx => mouseInputx= ctx.ReadValue<float>();
-        playerInput.actions["MouseY"].performed += ctx => mouseInputy= ctx.ReadValue<float>();
+        Mousex = playerInput.actions["MouseX"];
+        Mousex.performed += ctx => mouseInputx= ctx.ReadValue<float>();
+        Mousey = playerInput.actions["MouseY"];
+        Mousey.performed += ctx => mouseInputy= ctx.ReadValue<float>();
     }
 
     private void SwitchView()

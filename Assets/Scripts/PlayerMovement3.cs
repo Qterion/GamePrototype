@@ -50,8 +50,10 @@ public class PlayerMovement3 : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction moveAction;
     private InputAction jumpAction;
-    private InputAction sprintAction;
-    private InputAction crouchAction;
+    private InputAction sprintStart;
+    private InputAction sprintFinish;
+    private InputAction crouchStart;
+    private InputAction crouchFinish;
     private bool isSprinting = false;
     private bool isCrouching = false;
     
@@ -76,10 +78,14 @@ public class PlayerMovement3 : MonoBehaviour
         // Unity New Input System
         moveAction=playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
-        playerInput.actions["SprintStart"].performed += X => SprintPressed();
-        playerInput.actions["SprintFinish"].performed += X => SprintPressed();
-        playerInput.actions["CrouchStart"].performed += X => CrouchPressed();
-        playerInput.actions["CrouchFinish"].performed += X => CrouchPressed();
+        sprintStart = playerInput.actions["SprintStart"];
+        sprintStart.performed += X => SprintPressed();
+        sprintFinish = playerInput.actions["SprintFinish"];
+        sprintFinish.performed += X => SprintPressed();
+        crouchStart = playerInput.actions["CrouchStart"];
+        crouchStart.performed += X => CrouchPressed();
+        crouchFinish = playerInput.actions["CrouchFinish"];
+        crouchFinish.performed += X => CrouchPressed();
         
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -168,7 +174,7 @@ public class PlayerMovement3 : MonoBehaviour
         }
 
         // Sprints only in Basic mode
-        if (grounded && isSprinting && PlayerCamera.currentView.Equals(ThirdPersonCamera.CameraView.Basic))
+        if (grounded && isSprinting && PlayerCamera.ViewSwitch)
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7239,8 +7239,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004140729}
-  m_LocalRotation: {x: 0.13870122, y: -5.344489e-10, z: 0.0000000051600075, w: 0.9903343}
-  m_LocalPosition: {x: 0.0000012595139, y: 5.684342e-14, z: -0.0000031276684}
+  m_LocalRotation: {x: 0.13870122, y: -9.0842875e-11, z: -0.000000004142647, w: 0.9903343}
+  m_LocalPosition: {x: 0.0000021697424, y: 0, z: -0.0000068321788}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7684,6 +7684,7 @@ GameObject:
   - component: {fileID: 1033192317}
   - component: {fileID: 1033192316}
   - component: {fileID: 1033192321}
+  - component: {fileID: 1033192322}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -7759,13 +7760,11 @@ MonoBehaviour:
   HighestPBeforeDamage: 8
   crouchSpeed: 3.5
   crouchYScale: 0.5
-  jumpKey: 32
-  sprintKey: 304
-  crouchKey: 306
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
+  PlayerCamera: {fileID: 2089831626}
   maxSlopeAngle: 100
   orientation: {fileID: 1039552634}
   state: 0
@@ -7817,6 +7816,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHPText: {fileID: 74872434}
+--- !u!143 &1033192322
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033192315}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1039552633
 GameObject:
   m_ObjectHideFlags: 0
@@ -17850,6 +17867,7 @@ GameObject:
   - component: {fileID: 2089831628}
   - component: {fileID: 2089831627}
   - component: {fileID: 2089831626}
+  - component: {fileID: 2089831631}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -17876,11 +17894,11 @@ MonoBehaviour:
   rotationSpeed: 2
   combatLookAt: {fileID: 1469800899}
   currentView: 0
-  CamSwitch: 118
   thirdPersonView: {fileID: 650031838}
   AimView: {fileID: 980609939}
   PlayerShoot: {fileID: 1033192315}
   PlayerGun: {fileID: 1766341036}
+  ViewSwitch: 1
 --- !u!114 &2089831627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17983,6 +18001,36 @@ Transform:
   m_Father: {fileID: 1033192320}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 5.46, y: -0.845, z: -0.08}
+--- !u!114 &2089831631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089831625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 04d9ebf62db1f4f46ab1aed2681e8392, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &2103563205
 PrefabInstance:
   m_ObjectHideFlags: 0
