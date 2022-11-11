@@ -13,6 +13,7 @@ public class EnemyHealth : MonoBehaviour {
     public void takenHealthDamage(int takenDamage) {
         Health -= takenDamage;
         if (Health <= 0) {
+            PointScript.pointValue +=10;
             PowerupScript.createPowerup();
             Destroy(gameObject);
         }
