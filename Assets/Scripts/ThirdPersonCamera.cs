@@ -19,7 +19,6 @@ public class ThirdPersonCamera : MonoBehaviour
     public CameraView currentView;
     public GameObject thirdPersonView;
     public GameObject AimView;
-    public GameObject PlayerShoot;
     public GameObject PlayerGun;
     private PlayerInput playerInput;
     private InputAction swithView;
@@ -39,7 +38,6 @@ public class ThirdPersonCamera : MonoBehaviour
         {
             AimView.SetActive(false);
             thirdPersonView.SetActive(true);
-            PlayerShoot.GetComponent<PlayerShooting>().enabled = false;
             PlayerGun.SetActive(false);
             currentView = CameraView.Basic;
 
@@ -49,8 +47,6 @@ public class ThirdPersonCamera : MonoBehaviour
         {
             AimView.SetActive(true);
             thirdPersonView.SetActive(false);
-            //enables the player shoot script
-            PlayerShoot.GetComponent<PlayerShooting>().enabled = true;
             //enables the player gun model in player obj
             PlayerGun.SetActive(true);
             currentView = CameraView.Combat;

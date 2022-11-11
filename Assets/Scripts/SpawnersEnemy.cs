@@ -42,7 +42,6 @@ public class SpawnersEnemy : MonoBehaviour
             int spawnerID = Random.Range(0, spawners.Length);
             GameObject.Instantiate(enemy, spawners[spawnerID].transform.position, spawners[spawnerID].transform.rotation);
             enemiesSpawned++;
-            Debug.Log(enemiesSpawned);
 
 
 

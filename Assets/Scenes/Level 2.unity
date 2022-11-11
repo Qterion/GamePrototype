@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -30891,7 +30891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2193520620161031735, guid: d59096dcdddce4f488ee713c3459fab4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000027559885
+      value: -0.000000002755989
       objectReference: {fileID: 0}
     - target: {fileID: 3365087191493260163, guid: d59096dcdddce4f488ee713c3459fab4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30943,20 +30943,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4146001803800715573, guid: d59096dcdddce4f488ee713c3459fab4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09362437
+      value: 0.09362436
       objectReference: {fileID: 0}
     - target: {fileID: 4146001803800715573, guid: d59096dcdddce4f488ee713c3459fab4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000034052317
+      value: 0.00000002548896
       objectReference: {fileID: 0}
     - target: {fileID: 4146001803800715573, guid: d59096dcdddce4f488ee713c3459fab4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000017872069
+      value: -9.602887e-10
       objectReference: {fileID: 0}
     - target: {fileID: 4499568644297779343, guid: d59096dcdddce4f488ee713c3459fab4, type: 3}
       propertyPath: allBullets
       value: 
       objectReference: {fileID: 1832181962}
+    - target: {fileID: 4499568644297779343, guid: d59096dcdddce4f488ee713c3459fab4, type: 3}
+      propertyPath: PlayerCamera
+      value: 
+      objectReference: {fileID: 242164087}
     - target: {fileID: 6466119974290305795, guid: d59096dcdddce4f488ee713c3459fab4, type: 3}
       propertyPath: m_Camera
       value: 

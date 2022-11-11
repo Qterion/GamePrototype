@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -391,7 +391,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh49006
+  m_Name: pb_Mesh29070
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -4119,7 +4119,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-52770
+  m_Name: pb_Mesh-3800
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -7456,7 +7456,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004140729}
-  m_LocalRotation: {x: 0.13870122, y: -5.344489e-10, z: 0.0000000051600075, w: 0.9903343}
+  m_LocalRotation: {x: 0.13870122, y: -9.0842875e-11, z: -0.000000004142647, w: 0.9903343}
   m_LocalPosition: {x: 0.0000012595139, y: 5.684342e-14, z: -0.0000031276684}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7946,7 +7946,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033192315}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 592e83cdef9c4f343ac0fcf8180c8d4a, type: 3}
   m_Name: 
@@ -7955,6 +7955,7 @@ MonoBehaviour:
   SightTransform: {fileID: 2127638886}
   allBullets: {fileID: 625979619}
   bulletDistance: 20
+  PlayerCamera: {fileID: 2089831626}
 --- !u!114 &1033192318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18160,7 +18161,6 @@ MonoBehaviour:
   currentView: 0
   thirdPersonView: {fileID: 650031838}
   AimView: {fileID: 980609939}
-  PlayerShoot: {fileID: 1033192315}
   PlayerGun: {fileID: 1766341036}
   ViewSwitch: 1
 --- !u!114 &2089831627

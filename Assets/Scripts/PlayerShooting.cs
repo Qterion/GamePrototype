@@ -14,7 +14,8 @@ public class PlayerShooting : MonoBehaviour {
     private Transform allBullets;
     [SerializeField]
     private float bulletDistance = 20f;
-
+    [Header("PlayerCam")]
+    public ThirdPersonCamera PlayerCamera;
     private PlayerInput playerInput;
     private Transform cameraTransform;
     private InputAction shootAction;
@@ -35,7 +36,7 @@ public class PlayerShooting : MonoBehaviour {
 
     private void ShootGun() {
         //checks if the script is enabled if yes, allows player to shoot
-        if (this.enabled == true){
+        if (!PlayerCamera.ViewSwitch){
             RaycastHit bulletHit;
             GameObject bullet = GameObject.Instantiate(bullets, SightTransform.position, Quaternion.identity, allBullets);
             BulletController bulletController = bullet.GetComponent<BulletController>();
