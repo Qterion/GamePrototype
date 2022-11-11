@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7496,7 +7496,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004140729}
-  m_LocalRotation: {x: 0.13870122, y: 0.0000000302987, z: -0.000000015746819, w: 0.9903343}
+  m_LocalRotation: {x: 0.13870122, y: 0.000000059446144, z: -0.0000000013035599, w: 0.99033433}
   m_LocalPosition: {x: -0.0000008679962, y: 0.0000023841872, z: -0.0000144528585}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7996,6 +7996,7 @@ MonoBehaviour:
   allBullets: {fileID: 625979619}
   bulletDistance: 20
   PlayerCamera: {fileID: 2089831626}
+  CanShoot: 0
 --- !u!114 &1033192318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18463,6 +18464,7 @@ MonoBehaviour:
   thirdPersonView: {fileID: 650031838}
   AimView: {fileID: 980609939}
   PlayerGun: {fileID: 1766341036}
+  Shooting: {fileID: 1033192317}
   ViewSwitch: 1
 --- !u!114 &2089831627
 MonoBehaviour:
