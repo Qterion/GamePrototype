@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     //initialises bullet property variables
-    private float bulletSpeed = 30f;
+    private float bulletSpeed = 60f;
     private float bulletTimeout = 2f;
     public int bulletDamage = 10;
 
