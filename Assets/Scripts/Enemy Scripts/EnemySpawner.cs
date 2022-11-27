@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject enemyPrefab;
     [SerializeField]
-    private float respawnTime = 5f;
+    private float respawnTime = 6f;
     private float nextSpawnTime;
     [SerializeField]
     private int maxEnemyInScene;
