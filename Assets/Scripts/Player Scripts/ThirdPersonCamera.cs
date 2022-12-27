@@ -12,7 +12,7 @@ public class ThirdPersonCamera : MonoBehaviour
     public Transform player;
     public Transform playerObj;
     public Rigidbody rb;
-
+   
     public float rotationSpeed;
 
     public Transform combatLookAt;
@@ -54,8 +54,8 @@ public class ThirdPersonCamera : MonoBehaviour
         // settings for the basic view
         if (currentView == CameraView.Basic)
         {
-            float horizontalInput = mouseInputx;
-            float verticalInput = mouseInputy;
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
             Vector3 InputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
             if (InputDir != Vector3.zero)
             {
