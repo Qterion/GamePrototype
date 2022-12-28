@@ -96,24 +96,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MouseX",
-                    "type": "PassThrough",
-                    "id": "6f178bc1-8192-4bae-9430-2941aa2e1702",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MouseY",
-                    "type": "PassThrough",
-                    "id": "5b85eda8-c314-4230-9817-c4d780f7ae95",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "SwitchWeapon",
                     "type": "Button",
                     "id": "9f9f0778-cc1c-44d9-bbe1-9bf66d9defb6",
@@ -272,7 +254,7 @@
                     "id": "1626e68c-d0c7-4559-ad43-ad6197baf9e0",
                     "path": "<Mouse>/delta",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "ScaleVector2(x=0.1,y=0.1)",
                     "groups": "",
                     "action": "Look",
                     "isComposite": false,
@@ -352,28 +334,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "CrouchFinish",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d5163b9f-b387-421d-8662-ffe4e14a764d",
-                    "path": "<Mouse>/delta/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MouseX",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "26756fff-9b33-4810-9c1d-34a3f1fd6381",
-                    "path": "<Mouse>/delta/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MouseY",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
