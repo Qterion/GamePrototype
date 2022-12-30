@@ -42,33 +42,37 @@ public class PlayerShooting : MonoBehaviour {
 
     //Used Raycasts for bullets shooting
     private void ShootGun() {
-        //checks if the script is enabled if yes, allows player to shoot
-        if (!PlayerCamera.ViewSwitch){
 
-            if (shootingCooldownTimer <= 0)
-            {
-                shootingCooldownTimer = shootingCooldown;
+        if(!PauseMenu.GameIsPaused)
+        {
+            //checks if the script is enabled if yes, allows player to shoot
+            if (!PlayerCamera.ViewSwitch){
 
-                RaycastHit bulletHit;
-
-                //Creates a bullet GameObject from the bullet prefab thats spawns at the gun's sight object, it has no rotation and is assigned the parent allBullet
-                GameObject bullet = GameObject.Instantiate(bullets, SightTransform.position, Quaternion.identity, allBullets);
-                BulletController bulletController = bullet.GetComponent<BulletController>();
-
-                //Creates a raycast from the camera position and travels forward from there until infinity (until timeout timer or collides comes first)
-                if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out bulletHit, Mathf.Infinity))
+                if (shootingCooldownTimer <= 0)
                 {
-                    bulletController.target = bulletHit.point;
-                    bulletController.bulletHit = true;
-                }
-                else
-                {
-                    bulletController.target = cameraTransform.position + cameraTransform.forward * bulletDistance;
-                    bulletController.bulletHit = true;
-                }
+                    shootingCooldownTimer = shootingCooldown;
 
-                //used to unsubscribe the ShootGun() method to the event of the shootAction
-                shootAction.performed -= _ => ShootGun();
+                    RaycastHit bulletHit;
+
+                    //Creates a bullet GameObject from the bullet prefab thats spawns at the gun's sight object, it has no rotation and is assigned the parent allBullet
+                    GameObject bullet = GameObject.Instantiate(bullets, SightTransform.position, Quaternion.identity, allBullets);
+                    BulletController bulletController = bullet.GetComponent<BulletController>();
+
+                    //Creates a raycast from the camera position and travels forward from there until infinity (until timeout timer or collides comes first)
+                    if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out bulletHit, Mathf.Infinity))
+                    {
+                        bulletController.target = bulletHit.point;
+                        bulletController.bulletHit = true;
+                    }
+                    else
+                    {
+                        bulletController.target = cameraTransform.position + cameraTransform.forward * bulletDistance;
+                        bulletController.bulletHit = true;
+                    }
+
+                    //used to unsubscribe the ShootGun() method to the event of the shootAction
+                    shootAction.performed -= _ => ShootGun();
+                }
             }
         }
     }
