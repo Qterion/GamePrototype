@@ -82,11 +82,13 @@ public class Powerup : MonoBehaviour
 
     //applies the health powerup by increasing health by 20
     private void healthPowerup() {
-        if (playerHealth.PlayerHP < 80) {
-            playerHealth.PlayerHP += 20;
+        GameObject player = GameObject.Find("Player");
+        playerHealth hp = player.GetComponent<playerHealth>();
+        if (hp.PlayerHP< (hp.PlayerMaxHP-20)) {
+            hp.PlayerHP += 20;
         }
         else {
-            playerHealth.PlayerHP = 100;
+            hp.PlayerHP = hp.PlayerMaxHP;
         }
     }
 
