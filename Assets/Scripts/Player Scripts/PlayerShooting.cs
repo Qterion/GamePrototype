@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
 
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerShooting : MonoBehaviour {
@@ -30,6 +32,13 @@ public class PlayerShooting : MonoBehaviour {
     public float magazineCapacity = 0f;
     public float reloadingCooldown = 5f;
     private float reloadingCooldownTimer;
+    private float reloadingWeaponType;
+    private bool swappedWeaponDuringReload = false;
+    public Coroutine reloadingCoroutine = null;
+    public TMP_Text bulletsCounterText;
+    public Text reloadText;
+    public Text reloadingText;
+    public Text noAmmoText;
 
     //Sets the PlayerInput actions and camera properties
     void Awake() {
@@ -61,7 +70,7 @@ public class PlayerShooting : MonoBehaviour {
 
                 if (magazineBulletCount > 0)
                 {
-                    if (shootingCooldownTimer <= 0 & reloadingCooldownTimer <= 0)
+                    if (shootingCooldownTimer <= 0 & reloadingCoroutine == null)
                     {
                         shootingCooldownTimer = shootingCooldown;
 
@@ -91,18 +100,39 @@ public class PlayerShooting : MonoBehaviour {
                     }
                 }
                 else {
-                    //display reload message
+                    if (bulletsCount == 0) {
+                        noAmmoText.gameObject.SetActive(true);
+                    }
+                    else {
+                        if (!reloadingText.gameObject.active) {
+                            reloadText.gameObject.SetActive(true);
+                        }
+                    }
                 }
 
             }
         }
     }
 
-    private void reloadGun() {
-        if (magazineBulletCount != magazineCapacity)
+    private void reloadGun()
+    {
+        if (magazineBulletCount != magazineCapacity & reloadingCoroutine == null & bulletsCount > 0)
         {
-            reloadingCooldownTimer = reloadingCooldown;
 
+            reloadingWeaponType = Player.GetComponent<playerGuns>().currentWeapon;
+            swappedWeaponDuringReload = false;
+
+            reloadingCoroutine = StartCoroutine(reloading());
+            reloadText.gameObject.SetActive(false);
+            reloadingText.gameObject.SetActive(true);
+        }
+    }
+
+    private IEnumerator reloading()
+    {
+        yield return new WaitForSeconds(2);
+        if (swappedWeaponDuringReload == false)
+        {
             float bulletsDifference = (magazineCapacity - magazineBulletCount);
 
             if ((bulletsCount - bulletsDifference) >= 0)
@@ -110,6 +140,7 @@ public class PlayerShooting : MonoBehaviour {
                 magazineBulletCount = magazineCapacity;
                 bulletsCount -= bulletsDifference;
                 Player.GetComponent<playerGuns>().setNewBullets(bulletsCount, magazineBulletCount);
+                reloadText.gameObject.SetActive(false);
             }
             else
             {
@@ -118,17 +149,13 @@ public class PlayerShooting : MonoBehaviour {
                     magazineBulletCount += bulletsCount;
                     bulletsCount = 0;
                     Player.GetComponent<playerGuns>().setNewBullets(bulletsCount, magazineBulletCount);
-                    //reloads remaining bullets left, that are less than the size of the magazine
+                    reloadText.gameObject.SetActive(false);
+                    //reloads the remaining bullets that are less than the size of the magazine
                 }
-                else
-                {
-                    //No bullets
-                }
-
-                //update total bullets and magazine in playerguns script
-                //add reload delay
             }
         }
+        reloadingText.gameObject.SetActive(false);
+        reloadingCoroutine = null;
     }
 
     private void Update() {
@@ -136,9 +163,17 @@ public class PlayerShooting : MonoBehaviour {
             shootingCooldownTimer -= Time.deltaTime;
         }
 
-        if (reloadingCooldownTimer > 0)
-        { 
-            reloadingCooldownTimer -= Time.deltaTime;
+        if (reloadingCoroutine != null)
+        {
+            if (reloadingWeaponType != Player.GetComponent<playerGuns>().currentWeapon) {
+                swappedWeaponDuringReload = true;
+                StopCoroutine(reloadingCoroutine);
+                reloadingCoroutine = null;
+            }
         }
+        else {
+            reloadingText.gameObject.SetActive(false);
+        }
+        bulletsCounterText.text = "Bullets: " + magazineBulletCount + "/" + bulletsCount;
     }
 }

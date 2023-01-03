@@ -57,9 +57,19 @@ public class playerGuns : MonoBehaviour
             if (currentWeapon == 1)
             {
                 Rifle.SetActive(true);
+                if (rifleMagazineBullets > 0 | rifleBullets == 0) {
+                    Rifle.GetComponent<PlayerShooting>().reloadText.gameObject.SetActive(false);
+                }
+                if (rifleBullets > 0 | rifleMagazineBullets > 0)
+                {
+                    Rifle.GetComponent<PlayerShooting>().noAmmoText.gameObject.SetActive(false);
+                }
                 Shotgun.SetActive(false);
+                Shotgun.GetComponent<PlayerShooting>().reloadingCoroutine = null;
                 SMG.SetActive(false);
+                SMG.GetComponent<PlayerShooting>().reloadingCoroutine = null;
                 Sniper.SetActive(false);
+                Sniper.GetComponent<PlayerShooting>().reloadingCoroutine = null;
                 Rifle.GetComponent<PlayerShooting>().shootingCooldown = 0.2f;
                 Rifle.GetComponent<PlayerShooting>().bulletsCount = rifleBullets;
                 Rifle.GetComponent<PlayerShooting>().magazineBulletCount = rifleMagazineBullets;
@@ -75,9 +85,20 @@ public class playerGuns : MonoBehaviour
             else if (currentWeapon == 2)
             {
                 Rifle.SetActive(false);
+                Rifle.GetComponent<PlayerShooting>().reloadingCoroutine = null;
                 Shotgun.SetActive(true);
+                if (shotgunMagazineBullets > 0 | shotgunBullets == 0)
+                {
+                    Shotgun.GetComponent<PlayerShooting>().reloadText.gameObject.SetActive(false);
+                }
+                if (shotgunBullets > 0 | shotgunMagazineBullets > 0)
+                {
+                    Shotgun.GetComponent<PlayerShooting>().noAmmoText.gameObject.SetActive(false);
+                }
                 SMG.SetActive(false);
+                SMG.GetComponent<PlayerShooting>().reloadingCoroutine = null;
                 Sniper.SetActive(false);
+                Sniper.GetComponent<PlayerShooting>().reloadingCoroutine = null;
                 Shotgun.GetComponent<PlayerShooting>().shootingCooldown = 0.5f;
                 Shotgun.GetComponent<PlayerShooting>().bulletsCount = shotgunBullets;
                 Shotgun.GetComponent<PlayerShooting>().magazineBulletCount = shotgunMagazineBullets;
@@ -93,9 +114,20 @@ public class playerGuns : MonoBehaviour
             else if (currentWeapon == 3)
             {
                 Rifle.SetActive(false);
+                Rifle.GetComponent<PlayerShooting>().reloadingCoroutine = null;
                 Shotgun.SetActive(false);
+                Shotgun.GetComponent<PlayerShooting>().reloadingCoroutine = null;
                 SMG.SetActive(true);
+                if (smgMagazineBullets > 0 | smgBullets == 0)
+                {
+                    SMG.GetComponent<PlayerShooting>().reloadText.gameObject.SetActive(false);
+                }
+                if (smgBullets > 0 | smgMagazineBullets > 0)
+                {
+                    SMG.GetComponent<PlayerShooting>().noAmmoText.gameObject.SetActive(false);
+                }
                 Sniper.SetActive(false);
+                Sniper.GetComponent<PlayerShooting>().reloadingCoroutine = null;
                 SMG.GetComponent<PlayerShooting>().shootingCooldown = 0.1f;
                 SMG.GetComponent<PlayerShooting>().bulletsCount = smgBullets;
                 SMG.GetComponent<PlayerShooting>().magazineBulletCount = smgMagazineBullets;
@@ -111,9 +143,20 @@ public class playerGuns : MonoBehaviour
             else if (currentWeapon == 4)
             {
                 Rifle.SetActive(false);
+                Rifle.GetComponent<PlayerShooting>().reloadingCoroutine = null;
                 Shotgun.SetActive(false);
+                Shotgun.GetComponent<PlayerShooting>().reloadingCoroutine = null;
                 SMG.SetActive(false);
+                SMG.GetComponent<PlayerShooting>().reloadingCoroutine = null;
                 Sniper.SetActive(true);
+                if (sniperMagazineBullets > 0 | sniperBullets == 0)
+                {
+                    Sniper.GetComponent<PlayerShooting>().reloadText.gameObject.SetActive(false);
+                }
+                if (sniperBullets > 0 | sniperMagazineBullets > 0)
+                {
+                    Sniper.GetComponent<PlayerShooting>().noAmmoText.gameObject.SetActive(false);
+                }
                 Sniper.GetComponent<PlayerShooting>().shootingCooldown = 1f;
                 Sniper.GetComponent<PlayerShooting>().bulletsCount = sniperBullets;
                 Sniper.GetComponent<PlayerShooting>().magazineBulletCount = sniperMagazineBullets;
