@@ -165,30 +165,34 @@ public class PlayerMovement3 : MonoBehaviour
     }
     private void MyInput()
     {
-        // getting values from WASD Input from Unity new Input system
-        Vector2 input = moveAction.ReadValue<Vector2>();
-        horizontalInput = input.x;
-        verticalInput = input.y;
-        
-        // only jumps when space bar is pressed, is ready to jump and player on the ground
-        if (jumpAction.triggered && readyToJump && grounded)
+        //This prevents the player to move, jump or crouch when game is paused
+        if (!PauseMenu.GameIsPaused)
         {
-            readyToJump = false;
-            Jump();
-            Invoke(nameof(ResetJump), jumpCooldown);
-        }
-
-        //crouch
-        if (isCrouching)
-        {
-            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+            // getting values from WASD Input from Unity new Input system
+            Vector2 input = moveAction.ReadValue<Vector2>();
+            horizontalInput = input.x;
+            verticalInput = input.y;
             
-        }
+            // only jumps when space bar is pressed, is ready to jump and player on the ground
+            if (jumpAction.triggered && readyToJump && grounded)
+            {
+                readyToJump = false;
+                Jump();
+                Invoke(nameof(ResetJump), jumpCooldown);
+            }
 
-        //stop crouch
-        if (!isCrouching)
-        {
-            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
+            //crouch
+            if (isCrouching)
+            {
+                transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+                
+            }
+
+            //stop crouch
+            if (!isCrouching)
+            {
+                transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
+            }
         }
     }
 

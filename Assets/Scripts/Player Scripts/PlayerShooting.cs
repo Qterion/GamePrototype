@@ -63,6 +63,7 @@ public class PlayerShooting : MonoBehaviour {
     //Used Raycasts for bullets shooting
     private void ShootGun() {
 
+        //This prevents the player to shoot when game is paused
         if (!PauseMenu.GameIsPaused)
         {
             //checks if the script is enabled if yes, allows player to shoot
@@ -116,15 +117,19 @@ public class PlayerShooting : MonoBehaviour {
 
     private void reloadGun()
     {
-        if (magazineBulletCount != magazineCapacity & reloadingCoroutine == null & bulletsCount > 0)
+        //This prevents the player to reload when game is paused
+        if (!PauseMenu.GameIsPaused)
         {
+            if (magazineBulletCount != magazineCapacity & reloadingCoroutine == null & bulletsCount > 0)
+            {
 
-            reloadingWeaponType = Player.GetComponent<playerGuns>().currentWeapon;
-            swappedWeaponDuringReload = false;
+                reloadingWeaponType = Player.GetComponent<playerGuns>().currentWeapon;
+                swappedWeaponDuringReload = false;
 
-            reloadingCoroutine = StartCoroutine(reloading());
-            reloadText.gameObject.SetActive(false);
-            reloadingText.gameObject.SetActive(true);
+                reloadingCoroutine = StartCoroutine(reloading());
+                reloadText.gameObject.SetActive(false);
+                reloadingText.gameObject.SetActive(true);
+            }
         }
     }
 

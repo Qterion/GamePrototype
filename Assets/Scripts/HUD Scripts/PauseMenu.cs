@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    //initialises pause menu property variables
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
@@ -12,8 +13,10 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Allows 'escape' button to trigger pause menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            //Checks if the game is pause or not
             if (GameIsPaused)
             {
                 Resume();
@@ -25,6 +28,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    //This method makes the game playabable back when it resumes
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
@@ -33,6 +37,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    //This method stops the game when it is paused
     void Pause()
     {
         pauseMenuUI.SetActive(true);

@@ -179,7 +179,11 @@ public class playerGuns : MonoBehaviour
     }
 
     private void SwitchWeapon(InputAction.CallbackContext context) {
-        currentWeapon = context.ReadValue<float>();
+        //This prevents the player to toggle view when game is paused
+        if(!PauseMenu.GameIsPaused)
+        {
+            currentWeapon = context.ReadValue<float>();
+        }
     }
 
     public void reduceMagazineBullets() {
