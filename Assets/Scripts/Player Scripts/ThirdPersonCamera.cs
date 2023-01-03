@@ -29,20 +29,24 @@ public class ThirdPersonCamera : MonoBehaviour
     }
     private void Update()
     {
-        // on true swithces to  basic view
-        if (ViewSwitch)
+        //This prevents the player to toggle view when game is paused
+        if(!PauseMenu.GameIsPaused)
         {
-            AimView.SetActive(false);
-            thirdPersonView.SetActive(true);
-            currentView = CameraView.Basic;
+            // on true swithces to  basic view
+            if (ViewSwitch)
+            {
+                AimView.SetActive(false);
+                thirdPersonView.SetActive(true);
+                currentView = CameraView.Basic;
 
-        }
-        //on viewswitch false switches on combat view
-        if (!ViewSwitch)
-        {
-            AimView.SetActive(true);
-            thirdPersonView.SetActive(false);
-            currentView = CameraView.Combat;
+            }
+            //on viewswitch false switches on combat view
+            if (!ViewSwitch)
+            {
+                AimView.SetActive(true);
+                thirdPersonView.SetActive(false);
+                currentView = CameraView.Combat;
+            }
         }
 
         Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
@@ -84,7 +88,11 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void SwitchView()
     {
-        ViewSwitch = !ViewSwitch;
+        //This prevents the player to toggle view when game is paused
+        if(!PauseMenu.GameIsPaused)
+        {
+            ViewSwitch = !ViewSwitch;
+        }
     }
 
     // Update is called once per frame

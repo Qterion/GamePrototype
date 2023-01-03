@@ -14,7 +14,7 @@ public class SceneSwitch : MonoBehaviour
 
         //if it no enemies are left load the level 2
         if (enemyLeft == 0) {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
     }
 }

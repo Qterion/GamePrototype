@@ -14,7 +14,7 @@ public class EndScene : MonoBehaviour
 
         //if it no enemies are left load the end scene
         if (enemyLeft == 0) {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
     }
 }
