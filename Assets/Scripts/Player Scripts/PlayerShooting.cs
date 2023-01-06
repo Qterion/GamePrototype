@@ -39,6 +39,15 @@ public class PlayerShooting : MonoBehaviour {
     public Text reloadText;
     public Text reloadingText;
     public Text noAmmoText;
+    [Header("Gun Sound Effects")]
+    [SerializeField] private AudioClip shootingSound;
+    [SerializeField] private AudioClip reloadingSound;
+    private AudioSource _audioSource;
+    
+
+    void Start(){
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     //Sets the PlayerInput actions and camera properties
     void Awake() {
@@ -98,6 +107,8 @@ public class PlayerShooting : MonoBehaviour {
 
                         //used to unsubscribe the ShootGun() method to the event of the shootAction
                         shootAction.performed -= _ => ShootGun();
+
+                        _audioSource.PlayOneShot(shootingSound);
                     }
                 }
                 else {
@@ -129,6 +140,8 @@ public class PlayerShooting : MonoBehaviour {
                 reloadingCoroutine = StartCoroutine(reloading());
                 reloadText.gameObject.SetActive(false);
                 reloadingText.gameObject.SetActive(true);
+
+                _audioSource.PlayOneShot(reloadingSound);
             }
         }
     }

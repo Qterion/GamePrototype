@@ -33,6 +33,13 @@ public class PlayerMovement3 : MonoBehaviour
     public LayerMask whatIsGround;
     bool grounded;
     
+    [Header("Movement Sound Effects")]
+    [SerializeField] private AudioClip walkSound;
+    [SerializeField] private AudioClip sprintSound;
+    [SerializeField] private AudioClip jumpStartSound;
+    [SerializeField] private AudioClip jumpLandSound;
+    private AudioSource _audioSource;
+
     [Header("PlayerCam")]
     public ThirdPersonCamera PlayerCamera;
 
@@ -84,6 +91,8 @@ public class PlayerMovement3 : MonoBehaviour
     }
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
+
         controller = GetComponent<CharacterController>();
         // disabling controller collider since it collides with player object
         controller.detectCollisions = false;
@@ -176,6 +185,7 @@ public class PlayerMovement3 : MonoBehaviour
             // only jumps when space bar is pressed, is ready to jump and player on the ground
             if (jumpAction.triggered && readyToJump && grounded)
             {
+                _audioSource.PlayOneShot(jumpStartSound);
                 readyToJump = false;
                 Jump();
                 Invoke(nameof(ResetJump), jumpCooldown);
@@ -244,6 +254,7 @@ public class PlayerMovement3 : MonoBehaviour
         if (grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            _audioSource.PlayOneShot(walkSound);
         }
             
         // player movement in air

@@ -46,20 +46,29 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
     }
 
+    //This method loads the settings menu page
     public void LoadSettings()
     {
         Debug.Log ("Load Settings...");
         SceneManager.LoadScene("Settings");
     }
 
-    public void LoadCredits()
+    //This method loads the credits page
+    public void LoadCreditsMenu()
     {
         Debug.Log ("Loading Credits...");
+        SceneManager.LoadScene("CreditsMenu");
     }
 
-    public void QuitGame()
+    //This method loads back to the main menu page
+    public void LoadStartMenu()
     {
-        Debug.Log ("Quitting game...");
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        Debug.Log ("Loading Start Menu...");
+        SceneManager.LoadScene("StartMenu");
+        PointScript.pointValue = 0;
+       
     }
 }
 
