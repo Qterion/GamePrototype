@@ -41,6 +41,7 @@ public class playerGuns : MonoBehaviour
     private float sniperBullets = 20;
     private float sniperMagazineBullets = 10;
     private float sniperMagazineCapacity = 10;
+    public float bulletDamageMultiplier = 1;
 
     // Start is called before the first frame update
     void Start() {
@@ -75,7 +76,7 @@ public class playerGuns : MonoBehaviour
                 Rifle.GetComponent<PlayerShooting>().magazineBulletCount = rifleMagazineBullets;
                 Rifle.GetComponent<PlayerShooting>().magazineCapacity = rifleMagazineCapacity;
                 Bullet.GetComponent<BulletController>().bulletTimeout = 1f;
-                Bullet.GetComponent<BulletController>().bulletDamage = 25;
+                Bullet.GetComponent<BulletController>().bulletDamage = (int)(25 * bulletDamageMultiplier);
                 Bullet.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                 hotbarSlot1.SetActive(true);
                 hotbarSlot2.SetActive(false);
@@ -104,7 +105,7 @@ public class playerGuns : MonoBehaviour
                 Shotgun.GetComponent<PlayerShooting>().magazineBulletCount = shotgunMagazineBullets;
                 Shotgun.GetComponent<PlayerShooting>().magazineCapacity = shotgunMagazineCapacity;
                 Bullet.GetComponent<BulletController>().bulletTimeout = 0.2f;
-                Bullet.GetComponent<BulletController>().bulletDamage = 50;
+                Bullet.GetComponent<BulletController>().bulletDamage = (int)(50 * bulletDamageMultiplier);
                 Bullet.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
                 hotbarSlot1.SetActive(false);
                 hotbarSlot2.SetActive(true);
@@ -133,7 +134,7 @@ public class playerGuns : MonoBehaviour
                 SMG.GetComponent<PlayerShooting>().magazineBulletCount = smgMagazineBullets;
                 SMG.GetComponent<PlayerShooting>().magazineCapacity = smgMagazineCapacity;
                 Bullet.GetComponent<BulletController>().bulletTimeout = 0.5f;
-                Bullet.GetComponent<BulletController>().bulletDamage = 15;
+                Bullet.GetComponent<BulletController>().bulletDamage = (int)(15 * bulletDamageMultiplier);
                 Bullet.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 hotbarSlot1.SetActive(false);
                 hotbarSlot2.SetActive(false);
@@ -162,7 +163,7 @@ public class playerGuns : MonoBehaviour
                 Sniper.GetComponent<PlayerShooting>().magazineBulletCount = sniperMagazineBullets;
                 Sniper.GetComponent<PlayerShooting>().magazineCapacity = sniperMagazineCapacity;
                 Bullet.GetComponent<BulletController>().bulletTimeout = 1f;
-                Bullet.GetComponent<BulletController>().bulletDamage = 100;
+                Bullet.GetComponent<BulletController>().bulletDamage = (int)(100 * bulletDamageMultiplier);
                 Bullet.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
                 hotbarSlot1.SetActive(false);
                 hotbarSlot2.SetActive(false);

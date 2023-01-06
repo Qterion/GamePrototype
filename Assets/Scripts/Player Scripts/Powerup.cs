@@ -17,7 +17,7 @@ public class Powerup : MonoBehaviour
         float smallSpawnChance = Random.Range(1, 5);
         if (smallSpawnChance == 1) {
             Vector3 spawnPosition = transform.position;
-            spawnPosition.y -= 0.75f;
+            //spawnPosition.y += 0.25f;
             
             //Randomly picks one of the three powerups to spawn
             float randomPick = Random.Range(1, 4);
@@ -95,8 +95,7 @@ public class Powerup : MonoBehaviour
     //applies the damage power up affect to player by doubling their gun's bullet damage
     public void damagePowerup() {
         GameObject player = GameObject.Find("Player");
-        GameObject bullet = player.GetComponent<PlayerShooting>().bullets;
-        bullet.GetComponent<BulletController>().bulletDamage = 20;
+        player.GetComponent<playerGuns>().bulletDamageMultiplier = 2;
 
         //Uses Coroutine to see if player is already under the damage power up affect, if so resets the timer
         if (damageCoroutine != null)
@@ -112,8 +111,7 @@ public class Powerup : MonoBehaviour
     private IEnumerator normalDamage() {
         yield return new WaitForSeconds(10);
         GameObject player = GameObject.Find("Player");
-        GameObject bullet = player.GetComponent<PlayerShooting>().bullets;
-        bullet.GetComponent<BulletController>().bulletDamage = 10;
+        player.GetComponent<playerGuns>().bulletDamageMultiplier = 1;
 
         //destroys the damage powerup as its no longer needed
         Destroy(gameObject);
