@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 public class SetVolume : MonoBehaviour {
-    public AudioMixer mixer;
-    public void SetLevel (float sliderValue)
+    public AudioMixer audioMixer;
+    public void SetBGMVolumeLevel (float currentBGMSliderVal)
     {
-        mixer.SetFloat("MusicVol", Mathf.Log10(sliderValue) * 20);
+        audioMixer.SetFloat("BGMVolume", Mathf.Log10(currentBGMSliderVal) * 20);
     }
 }
