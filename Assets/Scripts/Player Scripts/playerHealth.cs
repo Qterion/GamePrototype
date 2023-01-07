@@ -40,7 +40,11 @@ public class playerHealth : MonoBehaviour
     {
         PlayerPrefs.SetFloat("PlayerHP", PlayerMaxHP);
         //Changes player health bar value on ui
-        PlayerHPText.text = "+" + PlayerHP;
+        if (PlayerHPText != null)
+        {
+            PlayerHPText.text = "+" + PlayerHP;
+        }
+        
         
 
         // if gameover is true it restarts the current scene
