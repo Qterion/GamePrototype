@@ -69,7 +69,7 @@ public class playerHealth : MonoBehaviour
     }
 
     // Reduces player health by the damage amount, if player health is less than 0 then ends the game
-    public void TakeDamage(int damageAmount)
+    public void TakeDamage(float damageAmount)
     {
         if (PlayerHP - damageAmount <= 0)
         {

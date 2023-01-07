@@ -21,6 +21,7 @@ public class PlayerMovement3 : MonoBehaviour
     public float jumpCooldown;
     public float airMult;
     bool readyToJump;
+    public bool takeFallDamage = true;
     public float HighestPBeforeDamage = 5;
   
     [Header("Crouching")]
@@ -101,9 +102,20 @@ public class PlayerMovement3 : MonoBehaviour
         if (PlayerPrefs.HasKey("JumpForce")){
             jumpForce= PlayerPrefs.GetFloat("JumpForce");
         }
-        if (PlayerPrefs.HasKey("walkSpeed"))
+        if (PlayerPrefs.HasKey("SprintSpeed"))
         {
-            sprintSpeed = PlayerPrefs.GetFloat("walkSpeed");
+            sprintSpeed = PlayerPrefs.GetFloat("SprintSpeed");
+        }
+        if (PlayerPrefs.HasKey("TakeFallDamage"))
+        {
+            if (PlayerPrefs.GetInt("TakeFallDamage") == 0)
+            {
+                takeFallDamage = false;
+            }
+            else
+            {
+                takeFallDamage = true;
+            }
         }
         if (JumpingSlider != null)
         {
@@ -147,10 +159,14 @@ public class PlayerMovement3 : MonoBehaviour
             // calculates if the fall height - the ground position is higher than the highest allowed height before damage
             if (FallHeight- this.transform.position.y > HighestPBeforeDamage)
             {
-                //passes the calculated damage value to the player health script
-                playerHealthScript.TakeFallDamage(Mathf.Round((FallHeight - this.transform.position.y) * 1) / 1 * 2);
-                //resets the fall height
-                FallHeight = this.transform.position.y;
+                if (takeFallDamage == true)
+                {
+                    //passes the calculated damage value to the player health script
+                    playerHealthScript.TakeFallDamage(Mathf.Round((FallHeight - this.transform.position.y) * 1) / 1 * 2);
+                    //resets the fall height
+                    FallHeight = this.transform.position.y;
+                }
+                
             }
 
         }
@@ -166,7 +182,7 @@ public class PlayerMovement3 : MonoBehaviour
         }
 
         PlayerPrefs.SetFloat("JumpForce", jumpForce);
-        PlayerPrefs.SetFloat("walkSpeed", sprintSpeed);
+        PlayerPrefs.SetFloat("SprintSpeed", sprintSpeed);
     }
     private void FixedUpdate()
     {

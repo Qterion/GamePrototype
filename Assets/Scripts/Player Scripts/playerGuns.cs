@@ -48,6 +48,10 @@ public class playerGuns : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         switchWeaponAction = playerInput.actions["SwitchWeapon"];
         switchWeaponAction.performed += context => SwitchWeapon(context);
+        if (PlayerPrefs.HasKey("BulletDamage"))
+        {
+            bulletDamageMultiplier = PlayerPrefs.GetFloat("BulletDamage");
+        }
     }
 
     // Update is called once per frame
