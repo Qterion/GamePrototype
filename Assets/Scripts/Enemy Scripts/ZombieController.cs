@@ -107,6 +107,12 @@ public class ZombieController : MonoBehaviour
 
     }
 
+    private void LateUpdate()
+    {
+        //Fixes the zombie X and Y rotation to stop them from rotating/falling over when colliding with other objects
+        transform.localEulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+    }
+
 
 
 }
