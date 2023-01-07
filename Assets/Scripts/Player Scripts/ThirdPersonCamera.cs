@@ -22,6 +22,8 @@ public class ThirdPersonCamera : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction swithView;
     public bool ViewSwitch = true;
+    private GameObject crosshair;
+
     public enum CameraView
     {
         Basic,
@@ -38,7 +40,7 @@ public class ThirdPersonCamera : MonoBehaviour
                 AimView.SetActive(false);
                 thirdPersonView.SetActive(true);
                 currentView = CameraView.Basic;
-
+                crosshair.SetActive(false);
             }
             //on viewswitch false switches on combat view
             if (!ViewSwitch)
@@ -46,6 +48,7 @@ public class ThirdPersonCamera : MonoBehaviour
                 AimView.SetActive(true);
                 thirdPersonView.SetActive(false);
                 currentView = CameraView.Combat;
+                crosshair.SetActive(true);
             }
         }
 
@@ -84,6 +87,7 @@ public class ThirdPersonCamera : MonoBehaviour
         // importing the viewchange to be able to switch view
         swithView = playerInput.actions["ViewChange"];
         swithView.performed += X => SwitchView();
+        crosshair = GameObject.Find("Dot crosshair");
     }
 
     private void SwitchView()
