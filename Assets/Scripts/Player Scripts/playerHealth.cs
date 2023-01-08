@@ -12,6 +12,8 @@ public class playerHealth : MonoBehaviour
     public TextMeshProUGUI PlayerHPText;
     public static bool GameOver;
     public Slider HealthSlider;
+    public GameObject HealthbarHealth;
+
     // Start is called before the first frame update
 
     public void PlayerHealthSet(float value)
@@ -30,8 +32,12 @@ public class playerHealth : MonoBehaviour
         }
         PlayerHP = PlayerMaxHP;
         if (HealthSlider !=null){
-            HealthSlider.value = PlayerMaxHP;
+            HealthSlider.maxValue = PlayerMaxHP;
+            HealthSlider.value = PlayerHP;
+            //HealthbarHealthColour = HealthbarHealth.GetComponent<Image>().color;
         }
+
+
         
     }
 
@@ -42,10 +48,26 @@ public class playerHealth : MonoBehaviour
         //Changes player health bar value on ui
         if (PlayerHPText != null)
         {
-            PlayerHPText.text = "+" + PlayerHP;
+            PlayerHPText.text = PlayerHP.ToString();
         }
-        
-        
+
+        if (HealthSlider != null)
+        {
+            HealthSlider.value = PlayerHP;
+            if (PlayerHP > (PlayerMaxHP/2))
+            {
+                HealthbarHealth.GetComponent<Image>().color = new Color32(60, 253, 18, 255);
+            }
+            else if (PlayerHP > (PlayerMaxHP/4) & PlayerHP <= (PlayerMaxHP/2))
+            {
+                HealthbarHealth.GetComponent<Image>().color = new Color32(255, 172, 20, 255);
+            }
+            else {
+                HealthbarHealth.GetComponent<Image>().color = new Color32(255, 20, 22, 255);
+            }
+        }
+
+
 
         // if gameover is true it restarts the current scene
         if (GameOver)

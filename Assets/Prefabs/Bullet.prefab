@@ -112,4 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 60
   bulletTimeout: 1
-  bulletDamage: 50
+  bulletDamage: 37
