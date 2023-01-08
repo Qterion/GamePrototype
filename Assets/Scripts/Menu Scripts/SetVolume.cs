@@ -9,7 +9,7 @@ public class SetVolume : MonoBehaviour {
     public Slider AudioSlider;
     public Slider GameVolSlider;
     public float Audiovol;
-    public float GameVol;
+    public float GameVol=1f;
 
 
     public void Start()
@@ -64,6 +64,10 @@ public class SetVolume : MonoBehaviour {
     }
     public void SFXAdjustment()
     {
-        SFXMixer.SetFloat("GameVol", Mathf.Log10(GameVol) * 20);
+        if (SFXMixer != null)
+        {
+            //SFXMixer.SetFloat("GameVol", Mathf.Log10(GameVol) * 20);
+        }
+            
     }
 }
