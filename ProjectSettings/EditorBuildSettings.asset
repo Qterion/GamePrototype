@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Procedural Map/Procedural Gen.unity
     guid: 3a1a1331c672c46a79804c8e76749fde
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Start Scene.unity
+    guid: 66251196a378ecf47ab0f30217d9268c
   m_configObjects: {}

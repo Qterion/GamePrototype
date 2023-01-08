@@ -17,4 +17,16 @@ public class SceneSwitch : MonoBehaviour
             SceneManager.LoadScene(2);
         }
     }
+
+    public void LoadNarrationScene()
+    {
+        Debug.Log ("Loading Narration Scene...");
+        SceneManager.LoadScene(5);
+    }
+
+    public void LoadStartScene()
+    {
+        Debug.Log ("Loading Start Scene...");
+        SceneManager.LoadScene(6);
+    }
 }
