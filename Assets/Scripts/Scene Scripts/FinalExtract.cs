@@ -6,7 +6,6 @@ public class FinalExtract : MonoBehaviour
 {
     // Start is called before the first frame update
     private bool iskeyCollected = false;
-    protected int booksCollected = 0;
     void Start()
     {
         
@@ -20,8 +19,6 @@ public class FinalExtract : MonoBehaviour
 
     void OnEnable() => KeyScript.OnCollected += OnKeyCollected;
 
-    
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -30,16 +27,8 @@ public class FinalExtract : MonoBehaviour
             
             if (iskeyCollected)
             {
-                if (booksCollected < 3)
-                {
-                    Debug.Log("Player Extracted with key");
-                }
-                else
-                {
-                    Debug.Log("Player Extracted with key and all books");
-                }
+                Debug.Log("Player Extracted with key");
             }
-            
             else
             {
                 Debug.Log("You need to collect key to extract");
@@ -53,8 +42,4 @@ public class FinalExtract : MonoBehaviour
         iskeyCollected = true;
     }
 
-    public void OnBookCollected()
-    {
-        booksCollected += 1;
-    }
 }

@@ -64,7 +64,8 @@ public class PlayerMovement3 : MonoBehaviour
     private InputAction crouchFinish;
     private bool isSprinting = false;
     private bool isCrouching = false;
-    
+    private Animator animator = null;
+
     [Header("Sliders")]
     public Slider JumpingSlider;
     public Slider SprintSpeedSlider;
@@ -183,6 +184,9 @@ public class PlayerMovement3 : MonoBehaviour
 
         PlayerPrefs.SetFloat("JumpForce", jumpForce);
         PlayerPrefs.SetFloat("SprintSpeed", sprintSpeed);
+
+
+
     }
     private void FixedUpdate()
     {
@@ -220,6 +224,8 @@ public class PlayerMovement3 : MonoBehaviour
                 transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
             }
         }
+
+  
     }
 
     
@@ -270,7 +276,7 @@ public class PlayerMovement3 : MonoBehaviour
         if (grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-            //_audioSource.PlayOneShot(walkSound);
+            _audioSource.PlayOneShot(walkSound);
         }
             
         // player movement in air
