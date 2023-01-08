@@ -15,12 +15,14 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentences;
 
+
     // Use this for initialization
     void Start()
     {
         sentences = new Queue<string>();
     }
 
+    //This method starts the dialogue with a queue
     public void StartDialogue(Dialogue dialogue)
     {
         animator.SetBool("IsOpen", true);
@@ -37,6 +39,7 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
+    //This method display the next sentence from the queue
     public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
@@ -50,6 +53,7 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeSentence(sentence));
     }
 
+    //This method displays the string letter by letter with an adjustable speed
     IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
@@ -60,6 +64,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    //This method ends the dialogue with an animation
     void EndDialogue()
     {
         animator.SetBool("IsOpen", false);

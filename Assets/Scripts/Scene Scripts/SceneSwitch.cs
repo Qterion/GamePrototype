@@ -14,7 +14,7 @@ public class SceneSwitch : MonoBehaviour
 
         //if it no enemies are left load the level 2
         if (enemyLeft == 0) {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(7);
         }
     }
 
@@ -28,5 +28,17 @@ public class SceneSwitch : MonoBehaviour
     {
         Debug.Log ("Loading Start Scene...");
         SceneManager.LoadScene(6);
+    }
+
+    public void LoadLevel2()
+    {
+        Debug.Log ("Loading Level 2...");
+        SceneManager.LoadScene(2);
+    }
+
+    public void LoadLevel3()
+    {
+        Debug.Log ("Loading Level 3...");
+        SceneManager.LoadScene(9);
     }
 }

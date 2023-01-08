@@ -21,6 +21,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Procedural Map/Procedural Gen.unity
     guid: 3a1a1331c672c46a79804c8e76749fde
   - enabled: 1
+    path: Assets/Scenes/Cutscenes/Narration Scene.unity
+    guid: 12fc711bc4b43d841949506c089e9095
+  - enabled: 1
     path: Assets/Scenes/Cutscenes/Start Scene.unity
     guid: 66251196a378ecf47ab0f30217d9268c
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Level 1 Complete.unity
+    guid: 58099bfbfea93174291ed788852376df
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Level 2 Complete.unity
+    guid: 4d277de6fec53264b82aeca4a0bde915
+  - enabled: 1
+    path: Assets/Scenes/MazeLVL.unity
+    guid: 0399e4312bc9cc044915668a07efa09c
   m_configObjects: {}
