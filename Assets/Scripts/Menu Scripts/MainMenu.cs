@@ -13,6 +13,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(4);
     }
 
+    public void LoadCreditsMenu(){
+        Debug.Log("Loading Credits...");
+        SceneManager.LoadScene(10);
+    }
+
     public void Quit() {
         Debug.Log("Quit");
         Application.Quit();

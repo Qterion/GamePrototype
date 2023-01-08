@@ -57,7 +57,7 @@ public class PauseMenu : MonoBehaviour
     public void LoadCreditsMenu()
     {
         Debug.Log ("Loading Credits...");
-        SceneManager.LoadScene("CreditsMenu");
+        SceneManager.LoadScene(10);
     }
 
     //This method loads back to the main menu page

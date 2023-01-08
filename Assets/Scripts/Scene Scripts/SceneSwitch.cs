@@ -18,6 +18,11 @@ public class SceneSwitch : MonoBehaviour
         }
     }
 
+    public void LoadMainMenu(){
+        Debug.Log ("Loading Main Menu...");
+        SceneManager.LoadScene(0);
+    }
+
     public void LoadNarrationScene()
     {
         Debug.Log ("Loading Narration Scene...");
