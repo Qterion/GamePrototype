@@ -13,9 +13,10 @@ public class SceneSwitch : MonoBehaviour
         int enemyLeft = enemyCount.Length;
 
         //if it no enemies are left load the level 2
-        if (enemyLeft == 0) {
+        //if (enemyLeft == 0) {
+            Debug.Log ("Loading Narration2...");
             SceneManager.LoadScene(7);
-        }
+        //}
     }
 
     public void LoadMainMenu(){

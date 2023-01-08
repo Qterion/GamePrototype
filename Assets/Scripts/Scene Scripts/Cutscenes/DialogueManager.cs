@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
 
     private Queue<string> sentences;
+    public Button skipButton;
 
 
     // Use this for initialization
@@ -47,7 +48,7 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
-
+        
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
@@ -62,6 +63,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSeconds(textSpeed);
         }
+        skipButton.interactable = true;
     }
 
     //This method ends the dialogue with an animation
