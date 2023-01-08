@@ -5,9 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 public class SetVolume : MonoBehaviour {
     public AudioMixer audioMixer;
+    public AudioMixer SFXMixer;
     public Slider AudioSlider;
+    public Slider GameVolSlider;
     public float Audiovol;
-
+    public float GameVol;
 
 
     public void Start()
@@ -19,7 +21,19 @@ public class SetVolume : MonoBehaviour {
             {
                 AudioSlider.value = Audiovol;
             }
-            audioMixer.SetFloat("BGMVolume", Mathf.Log10(Audiovol) * 20);
+            BGMAdjustment();
+
+
+        }
+        if (PlayerPrefs.HasKey("GameVol"))
+        {
+            GameVol = PlayerPrefs.GetFloat("GameVol");
+            if (GameVolSlider != null)
+            {
+                GameVolSlider.value = GameVol;
+            }
+            SFXAdjustment();
+
 
         }
 
@@ -27,10 +41,29 @@ public class SetVolume : MonoBehaviour {
     public void Update()
     {
         PlayerPrefs.SetFloat("AudioVol", Audiovol);
+        PlayerPrefs.SetFloat("GameVol", GameVol);
     }
     public void SetBGMVolumeLevel (float currentBGMSliderVal)
     {
         Audiovol = currentBGMSliderVal;
-        audioMixer.SetFloat("BGMVolume", Mathf.Log10(Audiovol) * 20);
+        BGMAdjustment();
+        
+    }
+    public void SetGameVolume(float currentBGMSliderVal)
+    {
+        GameVol = currentBGMSliderVal;
+        SFXAdjustment();
+    }
+    public void BGMAdjustment()
+    {
+        if (audioMixer != null)
+        {
+            audioMixer.SetFloat("BGMVolume", Mathf.Log10(Audiovol) * 20);
+        }
+
+    }
+    public void SFXAdjustment()
+    {
+        SFXMixer.SetFloat("GameVol", Mathf.Log10(GameVol) * 20);
     }
 }
