@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6afcdccea871141a8a35eb41583ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedPowerup: {fileID: 7892300355931315185, guid: a1c13dbf778f85b4d9532f6e9487aadb, type: 3}
+  SpeedPowerup: {fileID: 6984270178465222022, guid: 00930dcb0d2197e40b48294c3fc6d050, type: 3}
   HealthPowerup: {fileID: 5374694843389811433, guid: 82ceda86a7cc93a4288d22afb9b3159e, type: 3}
   DamagePowerup: {fileID: 5150794883420514213, guid: c3ff42ca0330aff4bbe52eae90ae8a08, type: 3}
 --- !u!1001 &528510421472078633
