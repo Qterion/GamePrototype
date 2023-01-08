@@ -19,13 +19,15 @@ public class SpawnersEnemy : MonoBehaviour
     [SerializeField]
     private int maxEnemyInScene;
     [SerializeField]
+    private int points;
+    [SerializeField]
     private int enemiesToSpawn;
     private int enemiesSpawned = 0;
 
 
     private void Start()
     {
-        spawners = new GameObject[5];
+        spawners = new GameObject[points];
 
         for (int i = 0; i < spawners.Length; i++) {
             spawners[i] = transform.GetChild(i).gameObject;
