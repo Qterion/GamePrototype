@@ -26,7 +26,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528510422829799025}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -16.004833}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 102.42672, y: 4.8618326}
+  m_AnchoredPosition: {x: 0, y: 3.5}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &528510422829798988
@@ -109,8 +109,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279434556
+  m_fontColor: {r: 0.23529412, g: 0.99215686, b: 0.07058824, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 528510422891339760}
   m_Layer: 0
   m_Name: Zombies
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,7 +210,7 @@ Transform:
   - {fileID: 62799778698890434}
   - {fileID: 528510422829798990}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &528510422891339722
 NavMeshAgent:
@@ -259,8 +259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
-  healthText: {fileID: 0}
-  PowerupScript: {fileID: 0}
+  healthText: {fileID: 528510422829798991}
+  PowerupScript: {fileID: 528510422891339760}
   damage: 10
   attackSpeed: 1.5
   canAttack: 1
@@ -277,8 +277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
-  healthText: {fileID: 0}
-  PowerupScript: {fileID: 0}
+  healthText: {fileID: 528510422829798991}
+  PowerupScript: {fileID: 528510422891339760}
 --- !u!54 &528510422891339726
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -304,7 +304,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 528510422891339763}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 1
   m_Direction: 1
@@ -321,9 +321,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6afcdccea871141a8a35eb41583ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedPowerup: {fileID: 0}
-  HealthPowerup: {fileID: 0}
-  DamagePowerup: {fileID: 0}
+  SpeedPowerup: {fileID: 7892300355931315185, guid: a1c13dbf778f85b4d9532f6e9487aadb, type: 3}
+  HealthPowerup: {fileID: 5374694843389811433, guid: 82ceda86a7cc93a4288d22afb9b3159e, type: 3}
+  DamagePowerup: {fileID: 5150794883420514213, guid: c3ff42ca0330aff4bbe52eae90ae8a08, type: 3}
 --- !u!1001 &528510421472078633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -400,3 +400,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
   m_PrefabInstance: {fileID: 528510421472078633}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7460569095773753054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6979701449709413879, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
+  m_PrefabInstance: {fileID: 528510421472078633}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &267600036736264280
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460569095773753054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.6496167
+  m_Height: 3.4027977
+  m_Direction: 1
+  m_Center: {x: 0.003591299, y: 1.4807312, z: 0.13175267}

@@ -29,4 +29,21 @@ public class EnemyHealth : MonoBehaviour {
     private void setHealthText() {
         healthText.text = Health.ToString();
     }
+
+    // Update is called once per frame
+    void LateUpdate()
+    {
+        //Health text changed to green if more than half HP
+        if (Health > 50) {
+            //healthText.color = new Color32(60, 253, 18, 255);
+        }
+        //Health text changed to Orange if less than half and more than a quarter of HP
+        else if (Health > 25 & Health <= 50) {
+            healthText.color = new Color32(255, 172, 20, 255);
+        }
+        //Health text changed to red if less than a quarter of HP
+        else {
+            healthText.color = new Color32(255, 20, 22, 255);
+        }
+    }
 }

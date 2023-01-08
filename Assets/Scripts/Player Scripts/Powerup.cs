@@ -95,7 +95,7 @@ public class Powerup : MonoBehaviour
     //applies the damage power up affect to player by doubling their gun's bullet damage
     public void damagePowerup() {
         GameObject player = GameObject.Find("Player");
-        player.GetComponent<playerGuns>().bulletDamageMultiplier = 2;
+        player.GetComponent<playerGuns>().doubleDamageMultiplier = 2;
 
         //Uses Coroutine to see if player is already under the damage power up affect, if so resets the timer
         if (damageCoroutine != null)
@@ -111,7 +111,7 @@ public class Powerup : MonoBehaviour
     private IEnumerator normalDamage() {
         yield return new WaitForSeconds(10);
         GameObject player = GameObject.Find("Player");
-        player.GetComponent<playerGuns>().bulletDamageMultiplier = 1;
+        player.GetComponent<playerGuns>().doubleDamageMultiplier = 1;
 
         //destroys the damage powerup as its no longer needed
         Destroy(gameObject);

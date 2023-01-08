@@ -31,13 +31,12 @@ public class playerHealth : MonoBehaviour
 
         }
         PlayerHP = PlayerMaxHP;
+
+        //Sets healthbar to max health
         if (HealthSlider !=null){
             HealthSlider.maxValue = PlayerMaxHP;
             HealthSlider.value = PlayerHP;
-            //HealthbarHealthColour = HealthbarHealth.GetComponent<Image>().color;
         }
-
-
         
     }
 
@@ -54,14 +53,17 @@ public class playerHealth : MonoBehaviour
         if (HealthSlider != null)
         {
             HealthSlider.value = PlayerHP;
+            //Healthbar filled with green if more than half max HP
             if (PlayerHP > (PlayerMaxHP/2))
             {
                 HealthbarHealth.GetComponent<Image>().color = new Color32(60, 253, 18, 255);
             }
+            //Healthbar filled with Orange if less than half and more than a quarter of max HP
             else if (PlayerHP > (PlayerMaxHP/4) & PlayerHP <= (PlayerMaxHP/2))
             {
                 HealthbarHealth.GetComponent<Image>().color = new Color32(255, 172, 20, 255);
             }
+            //Healthbar filled with red if less than a quarter of max HP
             else {
                 HealthbarHealth.GetComponent<Image>().color = new Color32(255, 20, 22, 255);
             }
