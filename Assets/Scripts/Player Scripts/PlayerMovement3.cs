@@ -270,7 +270,7 @@ public class PlayerMovement3 : MonoBehaviour
         if (grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-            _audioSource.PlayOneShot(walkSound);
+            //_audioSource.PlayOneShot(walkSound);
         }
             
         // player movement in air
