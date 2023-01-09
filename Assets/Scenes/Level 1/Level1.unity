@@ -13381,6 +13381,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4902965214161574928, guid: 8cdfebe4d83a24557aa26193ff26eca2, type: 3}
   m_PrefabInstance: {fileID: 1447209381}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1448985388 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5985777019616687225, guid: 3bfab5a2b956e704f9a32eb97dffa6f6, type: 3}
+  m_PrefabInstance: {fileID: 5985777018617706493}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1849853146458ed4b9ef1a6d597d5a1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1457207879 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2108062983227243546, guid: e41284ed4ea521d41b0cd8827e1f56e0, type: 3}
@@ -23029,6 +23040,14 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1677157240}
+    - target: {fileID: 2108062983460784703, guid: e41284ed4ea521d41b0cd8827e1f56e0, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1448985388}
+    - target: {fileID: 2108062983460784703, guid: e41284ed4ea521d41b0cd8827e1f56e0, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HorizontalSense
+      objectReference: {fileID: 0}
     - target: {fileID: 2108062984033526430, guid: e41284ed4ea521d41b0cd8827e1f56e0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -23076,6 +23095,14 @@ PrefabInstance:
     - target: {fileID: 2108062984033526431, guid: e41284ed4ea521d41b0cd8827e1f56e0, type: 3}
       propertyPath: m_Name
       value: HUDall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2108062984209487518, guid: e41284ed4ea521d41b0cd8827e1f56e0, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1448985388}
+    - target: {fileID: 2108062984209487518, guid: e41284ed4ea521d41b0cd8827e1f56e0, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: VerticalSense
       objectReference: {fileID: 0}
     - target: {fileID: 6650254059129970991, guid: e41284ed4ea521d41b0cd8827e1f56e0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -23269,7 +23296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5985777019078107790, guid: 3bfab5a2b956e704f9a32eb97dffa6f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.9203017
+      value: 1.7145164
       objectReference: {fileID: 0}
     - target: {fileID: 5985777019373107576, guid: 3bfab5a2b956e704f9a32eb97dffa6f6, type: 3}
       propertyPath: noAmmoText
@@ -23401,7 +23428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5985777020130643063, guid: 3bfab5a2b956e704f9a32eb97dffa6f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9203017
+      value: -1.7145164
       objectReference: {fileID: 0}
     - target: {fileID: 5985777020130643063, guid: 3bfab5a2b956e704f9a32eb97dffa6f6, type: 3}
       propertyPath: m_LocalRotation.y
@@ -23433,15 +23460,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5985777020353017751, guid: 3bfab5a2b956e704f9a32eb97dffa6f6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000000544065
+      value: -0.0000000054406506
       objectReference: {fileID: 0}
     - target: {fileID: 5985777020537243413, guid: 3bfab5a2b956e704f9a32eb97dffa6f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9203017
+      value: -1.7145164
       objectReference: {fileID: 0}
     - target: {fileID: 5985777020541580907, guid: 3bfab5a2b956e704f9a32eb97dffa6f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.9203017
+      value: -1.7145164
       objectReference: {fileID: 0}
     - target: {fileID: 5985777020707535664, guid: 3bfab5a2b956e704f9a32eb97dffa6f6, type: 3}
       propertyPath: field of view
