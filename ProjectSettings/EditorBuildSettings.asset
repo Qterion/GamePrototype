@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Cutscenes/Level 2 Complete.unity
     guid: 4d277de6fec53264b82aeca4a0bde915
   - enabled: 1
-    path: Assets/Scenes/MazeLVL.unity
+    path: Assets/Scenes/MazeLVL/MazeLVL.unity
     guid: 0399e4312bc9cc044915668a07efa09c
   - enabled: 1
     path: Assets/Scenes/End Scene/Credits Menu.unity
