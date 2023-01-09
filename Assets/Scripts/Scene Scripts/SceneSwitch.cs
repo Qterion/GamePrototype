@@ -50,11 +50,15 @@ public class SceneSwitch : MonoBehaviour
         SceneManager.LoadScene(9);
     }
 
+    public void LoadTutorialCutscene()
+    {
+        Debug.Log ("Loading Tutorial Level...");
+        SceneManager.LoadScene(13);
+    }
+
     public void LoadTutorialLevel()
     {
         Debug.Log ("Loading Tutorial Level...");
         SceneManager.LoadScene(14);
     }
-
-
 }
