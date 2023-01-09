@@ -194,6 +194,14 @@ public class PlayerMovement3 : MonoBehaviour
 
 
 
+     
+
+
+
+    }
+    private void FixedUpdate()
+    {
+        MovePlayer();
         if (state == MovementState.walking)
         {
             anim.SetBool("Walking", true);
@@ -229,12 +237,15 @@ public class PlayerMovement3 : MonoBehaviour
             anim.SetBool("Idle", false);
         }
 
+        if (state == MovementState.idle)
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Jump", false);
+            anim.SetBool("Running", false);
+            anim.SetBool("Crouching", false);
+            anim.SetBool("Idle", true);
+        }
 
-
-    }
-    private void FixedUpdate()
-    {
-        MovePlayer();
     }
     private void MyInput()
     {
