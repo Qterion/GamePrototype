@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
 
     private Queue<string> sentences;
-    public Button skipButton;
+    //public Button skipButton;
 
 
     // Use this for initialization
@@ -63,7 +63,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSeconds(textSpeed);
         }
-        skipButton.interactable = true;
+        //skipButton.interactable = true;
     }
 
     //This method ends the dialogue with an animation

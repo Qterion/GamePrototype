@@ -1094,10 +1094,10 @@ MonoBehaviour:
       outbreak has been contained, and the world is safe once again. Thanks to your
       bravery and determination, we can all start anew and rebuild what was lost.
       This is a new beginning.
-    - But remember, the journey never truly ends. There will always be challenges
-      and obstacles to overcome. But with the skills and determination you've gained
-      through this experience, you'll be able to face them head on and emerge victorious.
-      This is just the beginning of your journey. The world is yours to conquer.
+    - You did it. You survived the maze, and you've found the cure. The world is
+      safe once again, thanks to your bravery and determination. You are a true hero,
+      and your legacy will live on for generations to come. The journey may be over,
+      but the adventure has just begun.
     textSpeed: 0
 --- !u!114 &548449865
 MonoBehaviour:
@@ -1579,7 +1579,6 @@ MonoBehaviour:
   dialogueText: {fileID: 1873063351}
   textSpeed: 0.025
   animator: {fileID: 1295900570}
-  skipButton: {fileID: 0}
 --- !u!1 &839666604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2585,10 +2584,10 @@ MonoBehaviour:
       outbreak has been contained, and the world is safe once again. Thanks to your
       bravery and determination, we can all start anew and rebuild what was lost.
       This is a new beginning.
-    - But remember, the journey never truly ends. There will always be challenges
-      and obstacles to overcome. But with the skills and determination you've gained
-      through this experience, you'll be able to face them head on and emerge victorious.
-      This is just the beginning of your journey. The world is yours to conquer.
+    - You did it. You survived the maze, and you've found the cure. The world is
+      safe once again, thanks to your bravery and determination. You are a true hero,
+      and your legacy will live on for generations to come. The journey may be over,
+      but the adventure has just begun.
     textSpeed: 0
 --- !u!114 &1187243794
 MonoBehaviour:
@@ -3241,7 +3240,7 @@ MonoBehaviour:
     sentences:
     - Bzzz.....Shhhhhh....Crackle.....
     - '"Attention all survivors, the outbreak has been contained. The last of the
-      zombies have been eliminated. The world is safe once again, thanks to the bravery
+      zombies have been cured. The world is safe once again, thanks to the bravery
       and determination of a single survivor. We will rebuild and start anew. This
       is a new beginning."'
     textSpeed: 0
@@ -3762,7 +3761,7 @@ MonoBehaviour:
     sentences:
     - Bzzz.....Shhhhhh....Crackle.....
     - '"Attention all survivors, the outbreak has been contained. The last of the
-      zombies have been eliminated. The world is safe once again, thanks to the bravery
+      zombies have been cured. The world is safe once again, thanks to the bravery
       and determination of a single survivor. We will rebuild and start anew. This
       is a new beginning."'
     textSpeed: 0

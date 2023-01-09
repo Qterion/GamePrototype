@@ -14,6 +14,9 @@ public class EndScene : MonoBehaviour
 
         //if it no enemies are left load the end scene
         if (enemyLeft == 0) {
+            Debug.Log ("Loading Narration3...");
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
             SceneManager.LoadScene(8);
         }
     }

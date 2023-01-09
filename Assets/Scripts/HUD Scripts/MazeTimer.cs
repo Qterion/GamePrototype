@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MazeTimer : MonoBehaviour
 {
@@ -24,6 +25,10 @@ public class MazeTimer : MonoBehaviour
         //Sets timer to 0 if it goes below the 0 mark
         else {
             mazeTimer = 0;
+            Debug.Log ("Loading LosingEndScene...");
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            SceneManager.LoadScene(12);
         }
 
         SetTimerDisplayText(mazeTimer);

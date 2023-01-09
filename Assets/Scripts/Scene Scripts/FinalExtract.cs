@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
+
 public class FinalExtract : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -33,10 +35,18 @@ public class FinalExtract : MonoBehaviour
                 if (booksCollected < 3)
                 {
                     Debug.Log("Player Extracted with key");
+                    Debug.Log ("Loading EndScene...");
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.visible = true;
+                    SceneManager.LoadScene(11);
                 }
                 else
                 {
                     Debug.Log("Player Extracted with key and all collectibles");
+                    Debug.Log ("Loading SpecialEndScene...");
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Cursor.visible = true;
+                    SceneManager.LoadScene(3);
                 }
             }
             else
