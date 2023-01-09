@@ -74,6 +74,7 @@ public class playerHealth : MonoBehaviour
         // if gameover is true it restarts the current scene
         if (GameOver)
         {
+            Debug.Log(21321);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
@@ -99,7 +100,7 @@ public class playerHealth : MonoBehaviour
     // Reduces player health by the damage amount, if player health is less than 0 then ends the game
     public void TakeDamage(float damageAmount)
     {
-        if (PlayerHP - damageAmount <= 0)
+        if (PlayerHP - damageAmount <= 1f)
         {
             PlayerHP = 0;
             GameOver = true;

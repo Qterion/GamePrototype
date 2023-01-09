@@ -254,7 +254,7 @@ public class PlayerMovement3 : MonoBehaviour
             // only jumps when space bar is pressed, is ready to jump and player on the ground
             if (jumpAction.triggered && readyToJump && grounded)
             {
-                _audioSource.PlayOneShot(jumpStartSound);
+                //_audioSource.PlayOneShot(jumpStartSound);
                 readyToJump = false;
                 Jump();
                 Invoke(nameof(ResetJump), jumpCooldown);
@@ -325,7 +325,7 @@ public class PlayerMovement3 : MonoBehaviour
         if (grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-            _audioSource.PlayOneShot(walkSound);
+            //_audioSource.PlayOneShot(walkSound);
         }
 
         // player movement in air
