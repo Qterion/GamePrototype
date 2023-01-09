@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerMovement3 : MonoBehaviour
 {
-    
+
     [Header("Movement")]
     private float moveSpeed;
     public float walkSpeed;
@@ -23,7 +23,7 @@ public class PlayerMovement3 : MonoBehaviour
     bool readyToJump;
     public bool takeFallDamage = true;
     public float HighestPBeforeDamage = 5;
-  
+
     [Header("Crouching")]
     public float crouchSpeed;
     public float crouchYScale;
@@ -33,7 +33,7 @@ public class PlayerMovement3 : MonoBehaviour
     public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;
-    
+
     [Header("Movement Sound Effects")]
     [SerializeField] private AudioClip walkSound;
     [SerializeField] private AudioClip sprintSound;
@@ -64,7 +64,7 @@ public class PlayerMovement3 : MonoBehaviour
     private InputAction crouchFinish;
     private bool isSprinting = false;
     private bool isCrouching = false;
-    private Animator animator = null;
+
 
     [Header("Sliders")]
     public Slider JumpingSlider;
@@ -72,7 +72,7 @@ public class PlayerMovement3 : MonoBehaviour
     // Start is called before the first frame update
 
 
-    private Animator anim = null;
+    private Animator anim;
 
 
     public MovementState state;
@@ -99,13 +99,15 @@ public class PlayerMovement3 : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
 
+
         controller = GetComponent<CharacterController>();
         // disabling controller collider since it collides with player object
         controller.detectCollisions = false;
         playerInput = GetComponent<PlayerInput>();
 
-        if (PlayerPrefs.HasKey("JumpForce")){
-            jumpForce= PlayerPrefs.GetFloat("JumpForce");
+        if (PlayerPrefs.HasKey("JumpForce"))
+        {
+            jumpForce = PlayerPrefs.GetFloat("JumpForce");
         }
         if (PlayerPrefs.HasKey("SprintSpeed"))
         {
@@ -130,10 +132,10 @@ public class PlayerMovement3 : MonoBehaviour
         {
             SprintSpeedSlider.value = walkSpeed;
         }
-        
+
 
         // Unity New Input System
-        moveAction =playerInput.actions["Move"];
+        moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
         sprintStart = playerInput.actions["SprintStart"];
         sprintStart.performed += X => SprintPressed();
@@ -143,7 +145,7 @@ public class PlayerMovement3 : MonoBehaviour
         crouchStart.performed += X => CrouchPressed();
         crouchFinish = playerInput.actions["CrouchFinish"];
         crouchFinish.performed += X => CrouchPressed();
-        
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         ResetJump();
@@ -152,8 +154,9 @@ public class PlayerMovement3 : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        GetReferences();
         //ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down,playerHeight*0.25f+0.2f, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.25f + 0.2f, whatIsGround);
         MyInput();
         SpeedControl();
         StateHandler();
@@ -162,7 +165,7 @@ public class PlayerMovement3 : MonoBehaviour
         {
             rb.drag = groundDrag;
             // calculates if the fall height - the ground position is higher than the highest allowed height before damage
-            if (FallHeight- this.transform.position.y > HighestPBeforeDamage)
+            if (FallHeight - this.transform.position.y > HighestPBeforeDamage)
             {
                 if (takeFallDamage == true)
                 {
@@ -171,7 +174,7 @@ public class PlayerMovement3 : MonoBehaviour
                     //resets the fall height
                     FallHeight = this.transform.position.y;
                 }
-                
+
             }
 
         }
@@ -180,7 +183,7 @@ public class PlayerMovement3 : MonoBehaviour
         {
             rb.drag = 0;
             // checks the highest point of the player off the ground
-            if (this.transform.position.y>FallHeight)
+            if (this.transform.position.y > FallHeight)
             {
                 FallHeight = this.transform.position.y;
             }
@@ -189,36 +192,41 @@ public class PlayerMovement3 : MonoBehaviour
         PlayerPrefs.SetFloat("JumpForce", jumpForce);
         PlayerPrefs.SetFloat("SprintSpeed", sprintSpeed);
 
+
+
         if (state == MovementState.walking)
         {
             anim.SetBool("Walking", true);
-        }
-        else
-        {
-            anim.SetBool("Walking", false);
+            anim.SetBool("Jump", false);
+            anim.SetBool("Running", false);
+            anim.SetBool("Crouching", false);
+            anim.SetBool("Idle", false);
         }
 
         if (state == MovementState.sprinting)
         {
-            anim.SetBool("Sprinting", true);
+            anim.SetBool("Walking", false);
+            anim.SetBool("Jump", false);
+            anim.SetBool("Running", true);
+            anim.SetBool("Crouching", false);
+            anim.SetBool("Idle", false);
         }
-        else
-        {
-            anim.SetBool("Sprinting", false);
-        }
-
         if (state == MovementState.crouching)
         {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Jump", false);
+            anim.SetBool("Running", false);
             anim.SetBool("Crouching", true);
-        }
-        else
-        {
-            anim.SetBool("Crouching", false);
+            anim.SetBool("Idle", false);
         }
 
         if (state == MovementState.air)
         {
-            anim.SetTrigger("Jump");
+            anim.SetBool("Walking", false);
+            anim.SetBool("Jump", true);
+            anim.SetBool("Running", false);
+            anim.SetBool("Crouching", false);
+            anim.SetBool("Idle", false);
         }
 
 
@@ -235,16 +243,14 @@ public class PlayerMovement3 : MonoBehaviour
         {
             // getting values from WASD Input from Unity new Input system
             Vector2 input = moveAction.ReadValue<Vector2>();
-            
             horizontalInput = input.x;
             verticalInput = input.y;
+
             if (moveAction.ReadValue<Vector2>() == Vector2.zero)
             {
                 state = MovementState.idle;
             }
-            {
 
-            }
             // only jumps when space bar is pressed, is ready to jump and player on the ground
             if (jumpAction.triggered && readyToJump && grounded)
             {
@@ -258,7 +264,7 @@ public class PlayerMovement3 : MonoBehaviour
             if (isCrouching)
             {
                 transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-                
+
             }
 
             //stop crouch
@@ -268,14 +274,14 @@ public class PlayerMovement3 : MonoBehaviour
             }
         }
 
-  
+
     }
 
-    
+
 
     private void StateHandler()
 
-        
+
     {
         //mode crouching
         if (isCrouching)
@@ -308,7 +314,7 @@ public class PlayerMovement3 : MonoBehaviour
         //on Slope
         if (OnSlope() && !exitingSlope)
         {
-            rb.AddForce(GetSlopeMoveDirection()*moveSpeed*20f,ForceMode.Force);
+            rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f, ForceMode.Force);
 
             if (rb.velocity.y > 0)
             {
@@ -321,22 +327,22 @@ public class PlayerMovement3 : MonoBehaviour
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
             _audioSource.PlayOneShot(walkSound);
         }
-            
+
         // player movement in air
-        else if(!grounded)
+        else if (!grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMult, ForceMode.Force);
         }
 
         //off gravity while on slope
         rb.useGravity = !OnSlope();
-        
+
     }
 
     private void SpeedControl()
     {
         //limit on slope
-        if (OnSlope()&& !exitingSlope)
+        if (OnSlope() && !exitingSlope)
         {
             if (rb.velocity.magnitude > moveSpeed)
             {
@@ -354,7 +360,7 @@ public class PlayerMovement3 : MonoBehaviour
             }
 
         }
-        
+
     }
     //basic Jump function
     private void Jump()
@@ -392,7 +398,7 @@ public class PlayerMovement3 : MonoBehaviour
     {
         isSprinting = !isSprinting;
     }
-    
+
     private void CrouchPressed()
     {
         isCrouching = !isCrouching;
@@ -401,11 +407,12 @@ public class PlayerMovement3 : MonoBehaviour
 
     private void GetReferences()
     {
-        
+
         anim = GetComponentInChildren<Animator>();
-      
+
 
 
     }
 
 }
+
