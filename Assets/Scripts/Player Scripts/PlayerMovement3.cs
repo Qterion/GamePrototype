@@ -72,6 +72,9 @@ public class PlayerMovement3 : MonoBehaviour
     // Start is called before the first frame update
 
 
+    private Animator anim = null;
+
+
     public MovementState state;
     public enum MovementState
     {
@@ -184,6 +187,38 @@ public class PlayerMovement3 : MonoBehaviour
 
         PlayerPrefs.SetFloat("JumpForce", jumpForce);
         PlayerPrefs.SetFloat("SprintSpeed", sprintSpeed);
+
+        if (state == MovementState.walking)
+        {
+            anim.SetBool("Walking", true);
+        }
+        else
+        {
+            anim.SetBool("Walking", false);
+        }
+
+        if (state == MovementState.sprinting)
+        {
+            anim.SetBool("Sprinting", true);
+        }
+        else
+        {
+            anim.SetBool("Sprinting", false);
+        }
+
+        if (state == MovementState.crouching)
+        {
+            anim.SetBool("Crouching", true);
+        }
+        else
+        {
+            anim.SetBool("Crouching", false);
+        }
+
+        if (state == MovementState.air)
+        {
+            anim.SetTrigger("Jump");
+        }
 
 
 
@@ -354,5 +389,15 @@ public class PlayerMovement3 : MonoBehaviour
     {
         isCrouching = !isCrouching;
     }
-   
+
+
+    private void GetReferences()
+    {
+        
+        anim = GetComponentInChildren<Animator>();
+      
+
+
+    }
+
 }
