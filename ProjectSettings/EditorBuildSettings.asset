@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 2/Level2.unity
     guid: 1c2cc6d27ac434c129bf8820ff66784a
   - enabled: 1
-    path: Assets/Scenes/End Scene/EndScene1.unity
+    path: Assets/Scenes/End Scene/SpecialEndScene.unity
     guid: 68777e64d7b3a45d984c5390839a9e83
   - enabled: 1
     path: Assets/Scenes/Procedural Map/Procedural Gen.unity
