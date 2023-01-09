@@ -79,6 +79,7 @@ public class PlayerMovement3 : MonoBehaviour
     public enum MovementState
     {
         walking,
+        idle,
         sprinting,
         crouching,
         air
@@ -234,9 +235,16 @@ public class PlayerMovement3 : MonoBehaviour
         {
             // getting values from WASD Input from Unity new Input system
             Vector2 input = moveAction.ReadValue<Vector2>();
+            
             horizontalInput = input.x;
             verticalInput = input.y;
-            
+            if (moveAction.ReadValue<Vector2>() == Vector2.zero)
+            {
+                state = MovementState.idle;
+            }
+            {
+
+            }
             // only jumps when space bar is pressed, is ready to jump and player on the ground
             if (jumpAction.triggered && readyToJump && grounded)
             {
