@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -570,7 +570,7 @@ MonoBehaviour:
     Aldwin Cortez Alcosiba \n\nNursultan Mussa\nEmmanuel Olabanji\nQasim Butt\n\nEmmanuel
     Olabanji\n\nNursultan Mussa\nQasim Butt\nEmmanuel Olabanji\nPaul Aldwin Cortez
     Alcosiba \n\nEhsan Baghdadi\n\nEhsan Baghdadi\nPaul Aldwin Cortez Alcosiba\n\nPaul
-    Aldwin Cortez Alcosiba\n\nEhsan Baghdadi"
+    Aldwin Cortez Alcosiba\n\nEhsan Baghdadi\nNursultan Mussa"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -1350,7 +1350,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Created by\n\nProgramming\n\n\n\n\n\n3D Models/Animators\n\n\n\nCharacter
     Designer\n\nUI Artists/Graphics\n\n\n\n\nMenu Graphics Designer \n\nMusic/SFX\n\n\nCutscene
-    Artist\n\nMap Designer"
+    Artist\n\nMap Designers"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
