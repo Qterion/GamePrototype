@@ -7,7 +7,7 @@ public class ZombieStats : EnemyHealth
 {
 
     [SerializeField] private float damage = 10f;
-    [SerializeField] public float attackSpeed = 1.5f;
+    [SerializeField] public float attackSpeed = 1f;
     [SerializeField] private bool canAttack = true;
     private playerHealth health;
 
