@@ -222,7 +222,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 4
   m_Acceleration: 2
   avoidancePriority: 50
   m_AngularSpeed: 1200
@@ -388,6 +388,62 @@ PrefabInstance:
       propertyPath: m_UpdateMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6761975217554959430, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.101261705
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761975217554959430, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9695101
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761975217554959430, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.67229
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761975217554959430, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761975217554959430, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761975217554959430, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999873
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761975217554959430, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0050458303
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761975217554959430, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761975217554959430, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.578
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804753757531423303, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: -0.1427387
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804753757531423303, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: -0.25654912
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804753757531423303, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: 0.07022917
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804753757531423303, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
+      propertyPath: m_AABB.m_Extent.x
+      value: 1.5032867
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804753757531423303, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
+      propertyPath: m_AABB.m_Extent.z
+      value: 0.7808001
+      objectReference: {fileID: 0}
     - target: {fileID: 8804753757531423303, guid: 511631cf74e7aeb4ab217a8e48304178, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -415,7 +471,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.6496167
-  m_Height: 3.4027977
+  m_Radius: 0.7194669
+  m_Height: 3.7386749
   m_Direction: 1
-  m_Center: {x: 0.003591299, y: 1.4807312, z: 0.13175267}
+  m_Center: {x: 0.0035907258, y: 1.3433583, z: -0.79839873}
