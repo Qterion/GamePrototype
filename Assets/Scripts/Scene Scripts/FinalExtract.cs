@@ -6,6 +6,7 @@ public class FinalExtract : MonoBehaviour
 {
     // Start is called before the first frame update
     private bool iskeyCollected = false;
+    protected int booksCollected = 0;
     void Start()
     {
         
@@ -25,9 +26,18 @@ public class FinalExtract : MonoBehaviour
         {
 
             
+            
             if (iskeyCollected)
             {
-                Debug.Log("Player Extracted with key");
+                
+                if (booksCollected < 3)
+                {
+                    Debug.Log("Player Extracted with key");
+                }
+                else
+                {
+                    Debug.Log("Player Extracted with key and all collectibles");
+                }
             }
             else
             {
@@ -40,6 +50,11 @@ public class FinalExtract : MonoBehaviour
     void OnKeyCollected()
     {
         iskeyCollected = true;
+    }
+
+    public void OneBookCollected()
+    {
+        booksCollected += 1;
     }
 
 }
