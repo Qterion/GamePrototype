@@ -45,6 +45,9 @@ EditorBuildSettings:
     path: Assets/Scenes/End Scene/LosingEndScene.unity
     guid: 2ebdad137b031ca4cb586f38c7c54f06
   - enabled: 1
-    path: Assets/Scenes/Tutorial Cutscene.unity
+    path: Assets/Scenes/Tutorial/Tutorial Cutscene.unity
     guid: 98ed1e5908c75944e8d797b60f23d9b7
+  - enabled: 1
+    path: Assets/Scenes/Tutorial_Level.unity
+    guid: ceca3d7aa3682fa429adc5ad67b05cc3
   m_configObjects: {}
