@@ -196,7 +196,7 @@ public class PlayerMovement3 : MonoBehaviour
 
         if (state == MovementState.walking)
         {
-            anim.SetBool("Walking", true);
+            anim.SetBool("Walking", false);
             anim.SetBool("Jump", false);
             anim.SetBool("Running", false);
             anim.SetBool("Crouching", false);
@@ -207,7 +207,7 @@ public class PlayerMovement3 : MonoBehaviour
         {
             anim.SetBool("Walking", false);
             anim.SetBool("Jump", false);
-            anim.SetBool("Running", true);
+            anim.SetBool("Running", false);
             anim.SetBool("Crouching", false);
             anim.SetBool("Idle", false);
         }
@@ -216,14 +216,14 @@ public class PlayerMovement3 : MonoBehaviour
             anim.SetBool("Walking", false);
             anim.SetBool("Jump", false);
             anim.SetBool("Running", false);
-            anim.SetBool("Crouching", true);
+            anim.SetBool("Crouching", false);
             anim.SetBool("Idle", false);
         }
 
         if (state == MovementState.air)
         {
             anim.SetBool("Walking", false);
-            anim.SetBool("Jump", true);
+            anim.SetBool("Jump", false);
             anim.SetBool("Running", false);
             anim.SetBool("Crouching", false);
             anim.SetBool("Idle", false);
