@@ -49,4 +49,10 @@ public class SceneSwitch : MonoBehaviour
         Debug.Log ("Loading Level 3...");
         SceneManager.LoadScene(9);
     }
+
+    public void LoadTutorialLevel()
+    {
+        Debug.Log ("Loading Tutorial Level...");
+        SceneManager.LoadScene(13);
+    }
 }
